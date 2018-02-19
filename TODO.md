@@ -1,13 +1,14 @@
 # Landing Page
 - [ ] Title, links to game and leaderboard
 
+
 # The Bar
 ## HTML
 - [ ] HTML layout
 - [ ] Character displayed
 - [ ] Bio: Brute
 ## Code
-- [ ] Create character objects
+- [ ] (VICTOR) Create character objects
 - [ ] Event listeners on character portrait to select character
 - [ ] Item selection
 - [ ] Go button to start game (once character and item are picked)
