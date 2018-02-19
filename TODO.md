@@ -9,6 +9,7 @@
 - [ ] Bio: Brute
 ## Code
 - [ ] (VICTOR) Character object
+- [ ] (VICTOR) Item objects
 - [ ] Event listeners on character portrait to select character
 - [ ] Item selection
 - [ ] Go button to start game (once character and item are picked)

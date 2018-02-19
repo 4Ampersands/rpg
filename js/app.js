@@ -46,10 +46,9 @@ const charAbilities = {
 Item = function (name) {
     this.name = name;
 
+    this.equipped = false;
     this.used = false;
 };
-
-const heavyArmor = new Item('Heavy Armor');
 
 // MONSTERS
 SmallMonster = function () {
@@ -75,7 +74,7 @@ const brute = new Character (
     'images/brute.png',
     5,
     5,
-    [heavyArmor],
-    Character.prototype.healing,
+    [new Item ('Heavy Armor'), new Item ('Second Weapon')],
+    charAbilities.healing,
     'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
 );
