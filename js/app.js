@@ -39,6 +39,14 @@ Character.prototype.run = function () {
 const charAbilities = {
     healing: function() {
         // heals 1-3 hp before every fight
+    },
+
+    dodge: function() {
+        // 50% chance to take 0 damage
+    },
+
+    chaosMagic: function() {
+        // randomly adds 0-10 to attack and defense
     }
 };
 
@@ -76,5 +84,25 @@ const brute = new Character (
     5,
     [new Item ('Heavy Armor'), new Item ('Second Weapon')],
     charAbilities.healing,
+    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+);
+
+const rogue = new Character (
+    'Rogue',
+    'images/rogue.png',
+    3,
+    3,
+    [new Item ('Smoke Bomb'), new Item ('Backpack')],
+    charAbilities.dodge,
+    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+);
+
+const wizard = new Character (
+    'Wizard',
+    'images/wizard.png',
+    1,
+    1,
+    [new Item ('Healing Potion'), new Item ('Mind Control Scoll')],
+    charAbilities.chaosMagic,
     'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
 );
