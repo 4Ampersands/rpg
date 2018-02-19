@@ -1,0 +1,15 @@
+# Working
+Only ever work on a personal branch. The name doesn't matter; whatever works for you.
+Remember to ACP.
+
+# You are ready to push to master
+Go to Github.
+Change to your working branch.
+Select "New pull request."
+Complete the pull process.
+This will update the master branch with your code.
+Tell us to pull from master.
+
+# One of us has committed to master
+Using terminal, switch to the master branch.
+Use the gommand "git pull origin master"

@@ -1,5 +1,4 @@
 # TO-DO
-Gitflow written down
 Wireframe
 Break code down into workable chunks
 
