@@ -1,5 +1,5 @@
 # Landing Page
-- [ ] (STEELE/RYAN) HTML: Title, links to game and leaderboard
+- [X] (STEELE/RYAN) HTML: Title, links to game and leaderboard
 - [ ] CSS: Title, links to game and leaderboard
 
 # The Bar
