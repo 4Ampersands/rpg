@@ -17,6 +17,7 @@ Character = function (name, portrait, attack, defense, inventory, ability, bio) 
     this.attack = attack;
     this.defense = defense;
     this.ability = ability;
+
     this.bio = bio;
 
     this.gold = 0;
