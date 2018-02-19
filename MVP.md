@@ -30,7 +30,7 @@ Left hand
 Right hand
 Armor
 
-# The Dunegon
+# The Dungeon
 Interface [art, animations, interface]
 
 # Six challenges
