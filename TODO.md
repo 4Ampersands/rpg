@@ -8,7 +8,7 @@
 - [ ] Character displayed
 - [ ] Bio: Brute
 ## Code
-- [ ] (VICTOR) Create character objects
+- [ ] (VICTOR) Character object
 - [ ] Event listeners on character portrait to select character
 - [ ] Item selection
 - [ ] Go button to start game (once character and item are picked)
@@ -19,14 +19,9 @@
 # The Dungeon
 ## HTML
 - [ ] Combat interface (run, fight, item)
-## Code 
-- [ ] Event listeners on run, fight, item
-
-# Monsters
-## HTML
 - [ ] Basic image for three monsters
-## Code
-- [ ] Monster objet
+## Code 
+- [ ] (VICTOR) Monster objet
 - [ ] Monster RNG (including attack, defense, gold)
 
 # Leaderboard
