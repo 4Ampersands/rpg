@@ -1,15 +1,14 @@
 # Landing Page
-- [ ] Title, links to game and leaderboard
-
+- [ ] (STEELE/RYAN) HTML: Title, links to game and leaderboard
+- [ ] CSS: Title, links to game and leaderboard
 
 # The Bar
-## HTML
-- [ ] HTML layout
-- [ ] Character displayed
-- [ ] Bio: Brute
+## Content
+- [X] HTML: framework
+- [ ] CSS: Character displayed
 ## Code
-- [ ] (VICTOR) Character object
-- [ ] (VICTOR) Item objects
+- [X] (VICTOR) Character object
+- [X] (VICTOR) Item objects
 - [ ] Event listeners on character portrait to select character
 - [ ] Item selection
 - [ ] Go button to start game (once character and item are picked)
@@ -18,15 +17,16 @@
 - [ ] Add Wizard
 
 # The Dungeon
-## HTML
-- [ ] Combat interface (run, fight, item)
-- [ ] Basic image for three monsters
+## Content
+- [X] (STEELE/RYAN) HTML: Combat interface (run, fight, item)
+- [ ] CSS: Combat interface
+- [ ] CSS: Basic image for three monsters
 ## Code 
-- [ ] (VICTOR) Monster objet
+- [X] (VICTOR) Monster objet
 - [ ] Monster RNG (including attack, defense, gold)
 
 # Leaderboard
 ## HTML
-- [ ] Building blocks for code-built table
+- [X] (STEELE/RYAN) Building blocks for code-built table
 ## Code
 - [ ] Generate leaderboard based on local storage data
