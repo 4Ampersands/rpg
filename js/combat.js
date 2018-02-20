@@ -32,7 +32,7 @@ const combat = {
         this.renderGraphics();
         this.elements.fight.addEventListener('click', this.preFight);
         this.elements.flee.addEventListener('click', this.flee);
-        this.elements.item.addEventListener('click', this.item.use);
+        this.elements.item.addEventListener('click', item.use);
     },
 
     load: function () {
@@ -138,13 +138,10 @@ const combat = {
     flee: function() {
 
         // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
-        localStorage.setItem(JSON.stringify('score', [prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
+        localStorage.setItem('score', JSON.stringify([prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
         
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
     
-    },
-        
-    useItem: function() {
     },
 
     reset: function() {
@@ -264,15 +261,21 @@ item.equip = function() {
             combat.elements.announcement.textContent = 'Smoke Bomb used!';
             combat.monstersDefeated++;
 
-            setTimeout(reset(), 1000);
+            setTimeout(combat.reset(), 1000);
         }
     } else if (combat.item.name === 'Healing Potion') {
         item.use = function() {
-            combat.character.gold += (combat.monster.gold * 2);
-            combat.elements.announcement.textContent = 'Healing Potion used!';
-            combat.monstersDefeated++;
+            if (combat.item.used === false) {
+                combat.item.used = true;
+                
+                combat.character.hp = 10;
 
-            setTimeout(reset(), 1000);
+                combat.elements.announcement.textContent = 'Healing Potion used!';
+                
+                combat.elements.characterHP.textContent = combat.character.hp;                
+            };
+
+            setTimeout(combat.reset(), 1000);
         }
     };
 
