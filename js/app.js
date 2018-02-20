@@ -99,7 +99,7 @@ const rogue = new Character (
     1,
     [new Item ('Smoke Bomb'), new Item ('Backpack')],
     charAbilities.dodge,
-    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+    'In theory, rogue is a pascifist. But more than that, she loves gold. If she can steal it without being seen, great. If not... Hey, it\'s not her fault that acquiring gold so often requires fighting the death.'
 );
 
 const wizard = new Character (
