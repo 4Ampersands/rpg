@@ -81,3 +81,33 @@ function LargeMonster () {
     this.gold = randomNumber(8,12);
     this.attack = randomNumber(5,6);
 };
+
+const brute = new Character (
+    'Brute',
+    'images/brute.png',
+    2,
+    2,
+    [new Item ('Heavy Armor'), new Item ('Second Weapon')],
+    charAbilities.healing,
+    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+);
+
+const rogue = new Character (
+    'Rogue',
+    'images/rogue.png',
+    3,
+    1,
+    [new Item ('Smoke Bomb'), new Item ('Backpack')],
+    charAbilities.dodge,
+    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+);
+
+const wizard = new Character (
+    'Wizard',
+    'images/wizard.png',
+    1,
+    0,
+    [new Item ('Healing Potion'), new Item ('Mind Control Scoll')],
+    charAbilities.chaosMagic,
+    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
+);
