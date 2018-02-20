@@ -47,6 +47,12 @@ const combat = {
         if (this.characterSpecs[1] === 'Backpack') {
             combat.item = backpack;
         }
+        if (this.characterSpecs[1] === 'Healing Potion') {
+            combat.item = healingPotion;
+        }
+        if (this.characterSpecs[1] === 'Mind Control Scroll') {
+            combat.item = mindControl;
+        }
     },
 
     start: function () {
@@ -139,7 +145,7 @@ const combat = {
     flee: function() {
 
         // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
-        localStorage.setItem('score', combat.character.gold);
+        localStorage.setItem('score', [prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]);
         
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
     
@@ -195,6 +201,8 @@ const heavyArmor = new Item('Heavy Armor');
 const secondWeapon = new Item('Second Weapon');
 const backpack = new Item('Backpack');
 const smokeBomb = new Item('Smoke Bomb');
+const mindControl = new Item('Mind Control Scroll');
+const healingPotion = new Item('Healing Potion');
 
 item.equip = function() {
     if (combat.item.name === 'Heavy Armor') {
@@ -259,9 +267,18 @@ item.equip = function() {
             combat.elements.announcement.textContent = 'Smoke Bomb used!';
             combat.monstersDefeated++;
 
-            setTimeout(createMonster(), 1000);
+            setTimeout(reset(), 1000);
+        }
+    } else if (combat.item.name === 'Healing Potion') {
+        item.use = function() {
+            combat.character.gold += (combat.monster.gold * 2);
+            combat.elements.announcement.textContent = 'Healing Potion used!';
+            combat.monstersDefeated++;
+
+            setTimeout(reset(), 1000);
         }
     };
+
 };
 
 combat.start();
