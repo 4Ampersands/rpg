@@ -9,7 +9,7 @@ bruteSelect.addEventListener("click", function() {
     const p = document.createElement("p");
     const p2 = document.createElement("p");
     p.textContent = brute.bio;
-    p2.textContent = 'Special Ability: Brute heals 1-3 hp after every fight, keeping him heathy for the next encounter.';
+    p2.textContent = 'Special Ability: Brute heals 1 hp after every fight, keeping him heathy for the next encounter.';
     
     const stats = document.getElementById("stats-items");
     const h3 = document.createElement("h2");
@@ -57,7 +57,7 @@ rogueSelect.addEventListener("click", function() {
     const p = document.createElement("p");
     const p2 = document.createElement("p2");
     p.textContent = rogue.bio;
-    p2.textContent = 'Special Ability: Rogue has a chance to dodge every attack, taking no damage for that encounter.';
+    p2.textContent = 'Special Ability: Rogue has a chance to dodge every attack, taking no damage for that round.';
 
     const stats = document.getElementById("stats-items");
     const h3 = document.createElement("h2");
@@ -113,11 +113,11 @@ wizardSelect.addEventListener("click", function() {
     const h4 = document.createElement("h2");
     h4.textContent = 'Defense Value: ' + wizard.defense;
     const itemSelect1 = document.createElement("button");
-    const itemSelect2 = document.createElement("button");
+    // const itemSelect2 = document.createElement("button");
     itemSelect1.className = "item-select";
-    itemSelect2.className = "item-select";
+    // itemSelect2.className = "item-select";
     itemSelect1.textContent = wizard.inventory[0].name;
-    itemSelect2.textContent = wizard.inventory[1].name;
+    // itemSelect2.textContent = wizard.inventory[1].name;
 
 
     bio.appendChild(h2);
@@ -126,7 +126,7 @@ wizardSelect.addEventListener("click", function() {
     stats.appendChild(h3);
     stats.appendChild(h4);
     stats.appendChild(itemSelect1);
-    stats.appendChild(itemSelect2);
+    // stats.appendChild(itemSelect2);
 
     itemSelect1.addEventListener("click", function () {
         const select = function() {
@@ -136,13 +136,13 @@ wizardSelect.addEventListener("click", function() {
         select();
     });
 
-    itemSelect2.addEventListener("click", function () {
-        const select = function() {
-        wizard.inventory[0].equipped = false;
-        wizard.inventory[1].equipped = true;
-        }
-        select();
-    });
+    // itemSelect2.addEventListener("click", function () {
+    //     const select = function() {
+    //     wizard.inventory[0].equipped = false;
+    //     wizard.inventory[1].equipped = true;
+    //     }
+    //     select();
+    // });
 });
 
 function clearCharSelect () {
@@ -172,7 +172,7 @@ function storage() {
         localStorage.setItem("characterSpecs", JSON.stringify([rogue.name, rogue.inventory[1].name]));
     } else if (wizard.inventory[0].equipped === true) {
         localStorage.setItem("characterSpecs", JSON.stringify([wizard.name, wizard.inventory[0].name]));
-    } else if (wizard.inventory[1].equipped === true) {
-        localStorage.setItem("characterSpecs", JSON.stringify([wizard.name, wizard.inventory[1].name]));
+    // } else if (wizard.inventory[1].equipped === true) {
+    //     localStorage.setItem("characterSpecs", JSON.stringify([wizard.name, wizard.inventory[1].name]));
     } 
 }

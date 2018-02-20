@@ -12,7 +12,7 @@
 - [X] Event listeners on character portrait to select character
 - [X] HTML: Item selection
 - [ ] CODE: Item selection
-- [ ] Go button to start game (once character and item are picked)
+- [X] Go button to start game (once character and item are picked)
 ## Stretch
 - [X] Add Rogue
 - [X] Add Wizard
@@ -25,7 +25,7 @@
 ## Code 
 - [X] (VICTOR) Monster objet
 - [X] Combat
-- [ ] Items in combat
+- [X] Items in combat
 - [X] Monster RNG (including attack, defense, gold)
 
 # Leaderboard
