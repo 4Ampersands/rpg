@@ -32,7 +32,6 @@ const combat = {
         this.renderGraphics();
         this.elements.fight.addEventListener('click', this.preFight);
         this.elements.flee.addEventListener('click', this.flee);
-        this.elements.item.addEventListener('click', item.use);
     },
 
     load: function () {
@@ -107,8 +106,12 @@ const combat = {
             combat.character.defense = 3;
             combat.character.portrait = 'images/brutearmor.jpeg';
             combat.elements.characterImg.setAttribute('src', combat.character.portrait);
-    
+
+            this.elements.item.textContent = (this.item.name + ' equipped. +1 armor');
+
         } else if (combat.item.name === 'Second Weapon') {
+            this.elements.item.textContent = (this.item.name) + ' equipped. You strike first!';
+
             combat.fight = function() {
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
                     
@@ -135,6 +138,8 @@ const combat = {
             };
         } else if (item.name === 'Backpack') {
             combat.fight = function() {
+                this.elements.item.textContent = (this.item.name + ' equipped. Double gold!');
+
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
         
                     combat.monsterAttack();
@@ -160,6 +165,9 @@ const combat = {
             };
         } else if (combat.item.name === 'Smoke Bomb') {
             item.use = function() {
+                this.elements.item.addEventListener('click', item.use);
+                this.elements.item.textContent = (this.item.name + ' available. Click to use.');
+
                 combat.character.gold += (combat.monster.gold * 2);
                 combat.elements.announcement.textContent = 'Smoke Bomb used!';
                 combat.monstersDefeated++;
@@ -188,7 +196,6 @@ const combat = {
         this.elements.characterGold.textContent = 'Gold: ' + this.character.gold;
         
         this.elements.monsterImg.setAttribute('src', this.monster.portrait);
-        this.elements.item.textContent = (this.item.name);
     },
 
     createMonster: function () {    
