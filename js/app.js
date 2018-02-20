@@ -11,7 +11,7 @@ const randomNumber = function(min, max) {
 // ability should be a method of the Character.prototype object
 // bio should be a short bio of the character as a string
 
-Character = function (name, portrait, attack, defense, inventory, ability, bio) {
+function Character (name, portrait, attack, defense, inventory, ability, bio) {
     this.name = name;
     this.portrait = portrait;
     this.inventory = inventory;
@@ -53,7 +53,7 @@ const charAbilities = {
 };
 
 // ITEMS
-Item = function (name) {
+function Item (name) {
     this.name = name;
 
     this.equipped = false;
@@ -61,19 +61,19 @@ Item = function (name) {
 };
 
 // MONSTERS
-SmallMonster = function () {
+function SmallMonster () {
     this.portrait = 'images/smallmonster.png';
     this.hp = 1;
     this.attack = randomNumber(1,2);
 };
 
-MediumMonster = function () {
+function MediumMonster () {
     this.portrait = 'images/mediummonster.jpg'
     this.hp = 2;
     this.attack = randomNumber(2,3);
 };
 
-LargeMonster = function () {
+function LargeMonster () {
     this.hp = 3;
     this.portrait = 'images/largemonster.jpg'
     this.attack = randomNumber(3,4);
