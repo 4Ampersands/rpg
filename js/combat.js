@@ -30,11 +30,11 @@ const combat = {
     },
 
     load: function () {
-        if (characterSpecs[0] === 'Brute') {
+        if (characterSpecs[0] === 'Zanshin') {
             combat.character = brute;
         } else if (characterSpecs[0] === 'Rogue') {
             combat.character = rogue;
-        } else if (characterSpecs[0] === 'Wizard') {
+        } else if (characterSpecs[0] === 'Touchstone') {
             combat.character = wizard;
         };
 
@@ -158,7 +158,7 @@ const combat = {
 
 // CHARACTER ABILITIES
 const loadAbility = function () {
-    if (combat.character.name === 'Brute') {
+    if (combat.character.name === 'Zanshin') {
         combat.preFight = function() {
             if (combat.character.hp <= 10) {
                 combat.character.hp += 1;
@@ -181,7 +181,7 @@ const loadAbility = function () {
                 setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
             }
         };
-    } else if (combat.character.name === 'Wizard') {
+    } else if (combat.character.name === 'Touchstone') {
         combat.preFight = function() {
             character.attack = randomNumber(1, 10);
             character.defense = randomNumber(1, 10);

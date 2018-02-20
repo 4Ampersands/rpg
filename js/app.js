@@ -67,7 +67,7 @@ function LargeMonster () {
 };
 
 const brute = new Character (
-    'Brute',
+    'Zanshin',
     'images/brute.png',
     2,
     2,
@@ -87,7 +87,7 @@ const rogue = new Character (
 );
 
 const wizard = new Character (
-    'Wizard',
+    'Touchstone',
     'images/wizard.png',
     1,
     0,
