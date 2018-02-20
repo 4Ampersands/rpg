@@ -8,9 +8,21 @@ if (localStorage.getItem('leaderboard')) {
     leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
 }
 
+const arrayLength = leaderboardArray.length;
+let spliced = false; 
+
 const playerInfo = JSON.parse(localStorage.getItem('score'));
 console.log(playerInfo)
-leaderboardArray.push(playerInfo);
+for (let i = 0; i < arrayLength; i++) {
+    if (playerInfo[3] >= leaderboardArray[i][3]) {
+        leaderboardArray.splice(i, 0, playerInfo);
+        spliced = true;
+    } 
+}
+
+if (spliced === false) {
+    leaderboardArray.push(playerInfo);
+}
 console.log(leaderboardArray);
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
 
