@@ -8,6 +8,6 @@ Three monsters (rng, art)
 Leaderboard
 
 ## Stretch
-Two more characters
+Two more characters (first strike)
 Select items
 Three more monsters

@@ -6,7 +6,7 @@ const randomNumber = function(min, max) {
 // CHARACTER CONSTRUCTOR
 // name should be their name.
 // portrait should be a path to a character portrait as a string
-// inventory should be an array containing an inventory Item
+// inventory should be a Item
 // attack and defense should be integers
 // ability should be a method of the Character.prototype object
 // bio should be a short bio of the character as a string
@@ -64,47 +64,20 @@ function Item (name) {
 function SmallMonster () {
     this.portrait = 'images/smallmonster.png';
     this.hp = 1;
-    this.attack = randomNumber(1,2);
+    this.gold = randomNumber(3,5);
+    this.attack = randomNumber(2,3);
 };
 
 function MediumMonster () {
     this.portrait = 'images/mediummonster.jpg'
     this.hp = 2;
-    this.attack = randomNumber(2,3);
+    this.gold = randomNumber(5,8);
+    this.attack = randomNumber(3,4);
 };
 
 function LargeMonster () {
     this.hp = 3;
     this.portrait = 'images/largemonster.jpg'
-    this.attack = randomNumber(3,4);
+    this.gold = randomNumber(8,12);
+    this.attack = randomNumber(5,6);
 };
-
-const brute = new Character (
-    'Brute',
-    'images/brute.png',
-    5,
-    5,
-    [new Item ('Heavy Armor'), new Item ('Second Weapon')],
-    charAbilities.healing,
-    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
-);
-
-const rogue = new Character (
-    'Rogue',
-    'images/rogue.png',
-    3,
-    3,
-    [new Item ('Smoke Bomb'), new Item ('Backpack')],
-    charAbilities.dodge,
-    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
-);
-
-const wizard = new Character (
-    'Wizard',
-    'images/wizard.png',
-    1,
-    1,
-    [new Item ('Healing Potion'), new Item ('Mind Control Scoll')],
-    charAbilities.chaosMagic,
-    'Brute loves to fight. He doesn\'t really care why. He\'ll fight anyone, any time. It\'s just how brute rolls.'
-);

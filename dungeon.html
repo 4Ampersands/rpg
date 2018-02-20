@@ -6,16 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    <section id="mainDungeon">
+    <section id="main-dungeon">
         <h1>Dungeon</h1>
-        <div id=playerCharacter1></div>
-        <div id=monsterOpponent1></div>
-        </section>
-    <section id="dungeonDecision">
-        <h1>Select Your Choice</h1>
-        <button>Stand and Fight!</button>
-        <button>Flee to live another day!</button>
+
+        <div id="character-div">
+            <img width="100px" alt="Character Image" id="character-img">
+            <p id="character-hp"></p>
+            <p id="character-gold"></p>
+        </div>
+
+        <div id="monster-div">
+            <img width="100px" alt="Monster Image" id="monster-img">
+        </div>
     </section>
+
+    <section id="dungeon-choice">
+        <h1>Select Your Choice</h1>
+
+        <h2 id="fight">Stand and Fight!</h2>
+
+        <h2 id="flee">Flee to live another day!</h2>
+
+        <h2 id="item"></h2>
+    </section>
+
+    <script src="js/app.js"></script>
+    <script src="js/combat.js"></script>
 </body>
 </html>
