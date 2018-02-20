@@ -3,10 +3,7 @@
 const combat = {
 
     // PLACEHOLDERS UNTIL LOCAL STORAGE IS UP
-    characterSpecs: localStorage.getItem('characterSpecs'),
-
-    character: rogue,
-    item: {name: 'Smoke Bomb'},
+    characterSpecs: JSON.parse(localStorage.getItem('characterSpecs')),
 
     monster: new SmallMonster,
     monstersDefeated: 0,
@@ -30,30 +27,30 @@ const combat = {
     },
 
     load: function () {
-        if (characterSpecs[0] === 'Zanshin') {
+        if (this.characterSpecs[0] === 'Zanshin') {
             combat.character = brute;
-        } else if (characterSpecs[0] === 'Rogue') {
+        } else if (this.characterSpecs[0] === 'Rogue') {
             combat.character = rogue;
-        } else if (characterSpecs[0] === 'Touchstone') {
+        } else if (this.characterSpecs[0] === 'Touchstone') {
             combat.character = wizard;
         };
 
-        if (characterSpecs[1] === 'Heavy Armor') {
+        if (this.characterSpecs[1] === 'Heavy Armor') {
             combat.item = heavyArmor;
         }
-        if (characterSpecs[1] === 'Second Weapon') {
-            combat.item = heavyArmor;
+        if (this.characterSpecs[1] === 'Second Weapon') {
+            combat.item = secondWeapon;
         }
-        if (characterSpecs[1] === 'Smoke Bomb') {
-            combat.item = heavyArmor;
+        if (this.characterSpecs[1] === 'Smoke Bomb') {
+            combat.item = smokeBomb;
         }
-        if (characterSpecs[1] === 'Backpack') {
-            combat.item = heavyArmor;
+        if (this.characterSpecs[1] === 'Backpack') {
+            combat.item = backpack;
         }
     },
 
     start: function () {
-        // load();
+        this.load();
         this.renderGraphics();
         loadAbility();
         item.equip();
@@ -69,14 +66,14 @@ const combat = {
         this.elements.characterGold.textContent = 'Gold: ' + this.character.gold;
         
         this.elements.monsterImg.setAttribute('src', this.monster.portrait);
-        this.elements.item.textContent = (this.character.inventory[0].name);
+        this.elements.item.textContent = (this.item.name);
     },
 
     createMonster: function () {    
         let random;
         if (combat.monstersDefeated < 4) {
             random = randomNumber(1, 2);
-        } else if (combat.monstersDefeated >= 4) {
+        } else if (combat.monstersDefeated === 4 || combat.monstersDefeated === 5) {
             random = randomNumber(1, 3);
         } else if (combat.monstersDefeated >=6) {
             random = 3;
@@ -142,7 +139,8 @@ const combat = {
     flee: function() {
 
         // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
-            
+        localStorage.setItem('score', combat.character.gold);
+        
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
     
     },
@@ -193,6 +191,11 @@ const loadAbility = function () {
 
 // ITEMS
 
+const heavyArmor = new Item('Heavy Armor');
+const secondWeapon = new Item('Second Weapon');
+const backpack = new Item('Backpack');
+const smokeBomb = new Item('Smoke Bomb');
+
 item.equip = function() {
     if (combat.item.name === 'Heavy Armor') {
 
@@ -205,10 +208,11 @@ item.equip = function() {
             while (combat.character.hp > 0 && combat.monster.hp > 0) {
                 
                 this.characterAttack();
-    
-                if (monster.hp <=0) {
+
+                if (this.monster.hp <=0) {
                     // MONSTER DIES ANIMATION
                     this.character.gold += this.monster.gold;
+                    combat.monstersDefeated++;
                     continue;
                 }
                 
@@ -219,11 +223,10 @@ item.equip = function() {
 
                     setTimeout(function() {window.location.replace('bar.html')}, 1000);
                     continue;
-                }
-                
-                setTimeout(this.reset(), 1000);
-                
+                };                
             };
+
+            setTimeout(this.reset(), 1000);
         };
     } else if (item.name === 'Backpack') {
         combat.fight = function() {
@@ -254,6 +257,7 @@ item.equip = function() {
         item.use = function() {
             combat.character.gold += (combat.monster.gold * 2);
             combat.elements.announcement.textContent = 'Smoke Bomb used!';
+            combat.monstersDefeated++;
 
             setTimeout(createMonster(), 1000);
         }
