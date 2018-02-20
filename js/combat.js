@@ -3,12 +3,10 @@
 const combat = {
 
     // PLACEHOLDERS UNTIL LOCAL STORAGE IS UP
-    characterSpecs: [],
+    characterSpecs: localStorage.getItem('characterSpecs'),
 
     character: rogue,
-    item: {name: 'Backpack'},
-
-
+    item: {name: 'Smoke Bomb'},
 
     monster: new SmallMonster,
     monstersDefeated: 0,
@@ -31,9 +29,28 @@ const combat = {
         item: document.getElementById('item')
     },
 
-    // load: function () {
-    //     this.characterSpecs = JSON.parse(localStorage.characterSpecs);
-    // },
+    load: function () {
+        if (characterSpecs[0] === 'Brute') {
+            combat.character = brute;
+        } else if (characterSpecs[0] === 'Rogue') {
+            combat.character = rogue;
+        } else if (characterSpecs[0] === 'Wizard') {
+            combat.character = wizard;
+        };
+
+        if (characterSpecs[1] === 'Heavy Armor') {
+            combat.item = heavyArmor;
+        }
+        if (characterSpecs[1] === 'Second Weapon') {
+            combat.item = heavyArmor;
+        }
+        if (characterSpecs[1] === 'Smoke Bomb') {
+            combat.item = heavyArmor;
+        }
+        if (characterSpecs[1] === 'Backpack') {
+            combat.item = heavyArmor;
+        }
+    },
 
     start: function () {
         // load();
@@ -42,7 +59,7 @@ const combat = {
         item.equip();
         this.elements.fight.addEventListener('click', this.preFight);
         this.elements.flee.addEventListener('click', this.flee);
-        this.elements.item.addEventListener('click', this.useItem);
+        this.elements.item.addEventListener('click', this.item.use);
     },
 
     // STILL NEEDS TO UTILIZE LOCALSTORAGE DATA
@@ -183,7 +200,7 @@ item.equip = function() {
         combat.character.portrait = 'images/brutearmor.jpeg';
         combat.elements.characterImg.setAttribute('src', combat.character.portrait);
 
-    } else if (item.name === 'Second Weapon') {
+    } else if (combat.item.name === 'Second Weapon') {
         combat.fight = function() {
             while (combat.character.hp > 0 && combat.monster.hp > 0) {
                 
@@ -233,6 +250,13 @@ item.equip = function() {
             setTimeout(combat.reset(), 1000);
     
         };
+    } else if (combat.item.name === 'Smoke Bomb') {
+        item.use = function() {
+            combat.character.gold += (combat.monster.gold * 2);
+            combat.elements.announcement.textContent = 'Smoke Bomb used!';
+
+            setTimeout(createMonster(), 1000);
+        }
     };
 };
 
