@@ -138,7 +138,7 @@ const combat = {
     flee: function() {
 
         // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
-        localStorage.setItem(JSON.stringify('score', [prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
+        localStorage.setItem('score', JSON.stringify([prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
         
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
     
