@@ -6,7 +6,7 @@ const combat = {
     characterSpecs: [],
 
     character: brute,
-    item: {name: 'Heavy Armor'},
+    item: {name: 'Second Weapon'},
 
 
 
@@ -29,51 +29,52 @@ const combat = {
         item: document.getElementById('item')
     },
 
-    load: function () {
-        this.characterSpecs = JSON.parse(localStorage.characterSpecs);
-    },
+    // load: function () {
+    //     this.characterSpecs = JSON.parse(localStorage.characterSpecs);
+    // },
 
     start: function () {
-        load();
-        renderGraphics();
-        this.elements.fight.addEventListener('click', fight());
-        this.elements.flee.addEventListener('click', flee());
-        this.elements.item.addEventListener('click', useItem());
+        // load();
+        this.renderGraphics();
+        item.equip();
+        this.elements.fight.addEventListener('click', this.fight);
+        this.elements.flee.addEventListener('click', this.flee);
+        this.elements.item.addEventListener('click', this.useItem);
     },
 
     // STILL NEEDS TO UTILIZE LOCALSTORAGE DATA
     renderGraphics: function () {
-        elements.characterImg.setAttribute('src', character.portrait);
-        elements.characterHP.textContent = 'HP: ' + character.hp;
-        elements.characterGold.textContent = 'Gold: ' + character.gold;
+        this.elements.characterImg.setAttribute('src', this.character.portrait);
+        this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+        this.elements.characterGold.textContent = 'Gold: ' + this.character.gold;
         
-        elements.monsterImg.setAttribute('src', monster.portrait);
-        elements.item.textContent = (character.inventory[0].name);
+        this.elements.monsterImg.setAttribute('src', this.monster.portrait);
+        this.elements.item.textContent = (this.character.inventory[0].name);
     },
 
     createMonster: function () {    
         let random;
-        if (monstersDefeated < 4) {
+        if (this.monstersDefeated < 4) {
             random = randomNumber(1, 2);
-        } else if (monstersDefeated >= 4) {
+        } else if (this.monstersDefeated >= 4) {
             random = randomNumber(1, 3);
         }
         
         if (random === 1 ) {
-            monster = new SmallMonster;
+            this.monster = new SmallMonster;
         } else if (random === 2) {
-            monster = new MediumMonster;
+            this.monster = new MediumMonster;
         } else if (random === 3) {
-            monster = new LargeMonster;
+            this.monster = new LargeMonster;
         }
     },
 
     fight: function() {
-        while (character.hp > 0 && monster.hp > 0) {
+        while (combat.character.hp > 0 && combat.monster.hp > 0) {
 
-            this.monsterAttack();
+            combat.monsterAttack();
             
-            if (character.hp <= 0 ) {
+            if (combat.character.hp <= 0 ) {
                 // PLAYER DIES ANIMATION
                 setTimeout(function() {
                     window.location.replace('bar.html')
@@ -81,28 +82,28 @@ const combat = {
                 continue;
             }
             
-            this.characterAttack();
+            combat.characterAttack();
 
-            if (monster.hp <=0) {
+            if (combat.monster.hp <=0) {
                 // MONSTER DIES ANIMATION
-                character.gold += monster.gold;
+                combat.character.gold += combat.monster.gold;
             }
         }
         
-        setTimeout(this.reset(), 1000);
+        setTimeout(combat.reset(), 1000);
 
     },
 
     monsterAttack: function() {
-        const damage = monster.attack - character.defense;
+        const damage = this.monster.attack - this.character.defense;
         if (damage > 0) {
-            character.hp -= damage;
-            elements.characterHP.textContent = 'HP: ' + character.hp;
+            this.character.hp -= damage;
+            this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
         }
     },
 
     characterAttack: function() {
-        monster.hp -= character.attack;
+        this.monster.hp -= this.character.attack;
     },
 
     flee: function() {
@@ -117,17 +118,19 @@ const combat = {
     },
 
     reset: function() {
-        createMonster();
-        renderGraphics();
+        this.createMonster();
+        this.renderGraphics();
     }
 };
 
 // ITEMS
 
 item.equip = function() {
-    if (item.name === 'Heavy Armor') {
+    if (combat.item.name === 'Heavy Armor') {
 
-        character.defense = 3;
+        combat.character.defense = 3;
+        combat.character.portrait = 'images/brutearmor.jpeg';
+        combat.elements.characterImg.setAttribute('src', combat.character.portrait);
 
     } else if (item.name === 'Second Weapon') {
         combat.fight = function() {
@@ -137,13 +140,13 @@ item.equip = function() {
     
                 if (monster.hp <=0) {
                     // MONSTER DIES ANIMATION
-                    character.gold += monster.gold;
+                    this.character.gold += this.monster.gold;
                     continue;
                 }
                 
                 this.monsterAttack();
                 
-                if (character.hp <= 0 ) {
+                if (this.character.hp <= 0 ) {
                     // PLAYER DIES ANIMATION
                     setTimeout(function() {window.location.replace('bar.html')}, 1000);
                     continue;
@@ -155,3 +158,5 @@ item.equip = function() {
         };
     };
 };
+
+combat.start();
