@@ -38,6 +38,14 @@ bruteSelect.addEventListener("click", function() {
         }
         select();
     });
+
+    itemSelect2.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = false;
+        brute.inventory[1].equipped = true;
+        }
+        select();
+    });
 });
 
 const rogueSelect = document.getElementById("rogue");
@@ -70,6 +78,22 @@ rogueSelect.addEventListener("click", function() {
     stats.appendChild(h4);
     stats.appendChild(itemSelect1);
     stats.appendChild(itemSelect2);
+
+    itemSelect1.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = true;
+        brute.inventory[1].equipped = false;
+        }
+        select();
+    });
+
+    itemSelect2.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = false;
+        brute.inventory[1].equipped = true;
+        }
+        select();
+    });
 });
 
 const wizardSelect = document.getElementById("wizard");
@@ -103,6 +127,22 @@ wizardSelect.addEventListener("click", function() {
     stats.appendChild(h4);
     stats.appendChild(itemSelect1);
     stats.appendChild(itemSelect2);
+
+    itemSelect1.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = true;
+        brute.inventory[1].equipped = false;
+        }
+        select();
+    });
+
+    itemSelect2.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = false;
+        brute.inventory[1].equipped = true;
+        }
+        select();
+    });
 });
 
 function clearCharSelect () {
