@@ -1,7 +1,9 @@
 'use strict';
 
+let monstersDefeated = 0;
+
 // ITEMS
-Item = function (name) {
+function Item (name) {
     this.name = name;
 
     this.equipped = false;
@@ -13,7 +15,7 @@ Item = function (name) {
 const brute = new Character (
     'Brute',
     'images/brute.png',
-    5,
+    2,
     2,
     [new Item ('Heavy Armor'), new Item ('Second Weapon')],
     charAbilities.healing,
@@ -48,6 +50,7 @@ const elements = {
     characterDiv: document.getElementById('character-div'),
     characterImg: document.getElementById('character-img'),
     characterHP: document.getElementById('character-hp'),
+    characterGold: document.getElementById('character-gold'),
 
     monsterDiv: document.getElementById('monster-div'),
     monsterImg: document.getElementById('monster-img'),
@@ -58,11 +61,16 @@ const elements = {
     item: document.getElementById('item')
 }
 
-// create monster
 let monster = {};
 
-const createMonster = function () {
-    const random = randomNumber(1, 3);
+const createMonster = function () {    
+    let random;
+    if (monstersDefeated < 4) {
+        random = randomNumber(1, 2);
+    } else if (monstersDefeated >= 4) {
+        random = randomNumber(1, 3);
+    }
+
     if (random === 1 ) {
         monster = new SmallMonster;
     } else if (random === 2) {
@@ -72,13 +80,13 @@ const createMonster = function () {
     }
 };
 
-// load localStorage data
+// LOAD LOCAL STORAGE DATA
 
-// load all visual elements
 // STILL NEEDS TO UTILIZE LOCALSTORAGE DATA
 const renderGraphics = function () {
     elements.characterImg.setAttribute('src', character.portrait);
-    elements.characterHP.textContent = character.hp;
+    elements.characterHP.textContent = 'HP: ' + character.hp;
+    elements.characterGold.textContent = 'Gold: ' + character.gold;
 
     elements.monsterImg.setAttribute('src', monster.portrait);
     elements.item.textContent = (character.inventory[0].name);
@@ -90,13 +98,10 @@ elements.fight.addEventListener('click', function() {
         const damage = monster.attack - character.defense;
         if (damage > 0) {
             character.hp -= damage;
+            elements.characterHP.textContent = 'HP: ' + character.hp;
         }
-        console.log('Attack: ' + monster.attack);
-        console.log('Damage: ' + damage);
-        elements.characterHP.textContent = character.hp;
         if (character.hp <= 0 ) {
             // PLAYER DIES ANIMATION
-            console.log('You died.');
             setTimeout(function() {
                 window.location.replace('bar.html')
             }, 1000);
@@ -106,6 +111,7 @@ elements.fight.addEventListener('click', function() {
         console.log('Monster: ' + monster.hp);
 
         if (monster.hp <=0) {
+            // MONSTER DIES ANIMATION
             character.gold += monster.gold;
             console.log('Gold: ' + character.gold);
         }

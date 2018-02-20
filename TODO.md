@@ -9,12 +9,13 @@
 ## Code
 - [X] (VICTOR) Character object
 - [X] (VICTOR) Item objects
-- [ ] Event listeners on character portrait to select character
-- [ ] Item selection
+- [X] Event listeners on character portrait to select character
+- [X] HTML: Item selection
+- [ ] CODE: Item selection
 - [ ] Go button to start game (once character and item are picked)
 ## Stretch
-- [ ] Add Rogue
-- [ ] Add Wizard
+- [X] Add Rogue
+- [X] Add Wizard
 
 # The Dungeon
 ## Content
@@ -23,7 +24,9 @@
 - [ ] CSS: Basic image for three monsters
 ## Code 
 - [X] (VICTOR) Monster objet
-- [ ] Monster RNG (including attack, defense, gold)
+- [X] Combat
+- [ ] Items in combat
+- [X] Monster RNG (including attack, defense, gold)
 
 # Leaderboard
 ## HTML
