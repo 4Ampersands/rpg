@@ -35,7 +35,7 @@ Character.prototype.useItem = function () {
 
 Character.prototype.run = function () {
     // end the game and apply sore to high score table
-}
+};
 
 const charAbilities = {
     healing: function() {
