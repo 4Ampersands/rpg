@@ -18,7 +18,8 @@ bruteSelect.addEventListener("click", function() {
     h4.textContent = 'Defense Value: ' + brute.defense;
     const itemSelect1 = document.createElement("button");
     const itemSelect2 = document.createElement("button");
-
+    itemSelect1.idName = "item-select1";
+    itemSelect2.idName = "item-select2";
     itemSelect1.textContent = brute.inventory[0].name;
     itemSelect2.textContent = brute.inventory[1].name;
 
@@ -29,6 +30,14 @@ bruteSelect.addEventListener("click", function() {
     stats.appendChild(h4);
     stats.appendChild(itemSelect1);
     stats.appendChild(itemSelect2);
+
+    itemSelect1.addEventListener("click", function () {
+        const select = function() {
+        brute.inventory[0].equipped = true;
+        brute.inventory[1].equipped = false;
+        }
+        select();
+    });
 });
 
 const rogueSelect = document.getElementById("rogue");
@@ -49,7 +58,8 @@ rogueSelect.addEventListener("click", function() {
     h4.textContent = 'Defense Value: ' + rogue.defense;
     const itemSelect1 = document.createElement("button");
     const itemSelect2 = document.createElement("button");
-
+    itemSelect1.className = "item-select";
+    itemSelect2.className = "item-select";
     itemSelect1.textContent = rogue.inventory[0].name;
     itemSelect2.textContent = rogue.inventory[1].name;
 
@@ -80,9 +90,11 @@ wizardSelect.addEventListener("click", function() {
     h4.textContent = 'Defense Value: ' + wizard.defense;
     const itemSelect1 = document.createElement("button");
     const itemSelect2 = document.createElement("button");
-
+    itemSelect1.className = "item-select";
+    itemSelect2.className = "item-select";
     itemSelect1.textContent = wizard.inventory[0].name;
     itemSelect2.textContent = wizard.inventory[1].name;
+
 
     bio.appendChild(h2);
     bio.appendChild(p);
