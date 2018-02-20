@@ -1,11 +1,10 @@
 'use strict';
 
 const combat = {
-
-    // PLACEHOLDERS UNTIL LOCAL STORAGE IS UP
     characterSpecs: JSON.parse(localStorage.getItem('characterSpecs')),
 
     monster: new SmallMonster,
+
     monstersDefeated: 0,
 
     elements: {
@@ -26,6 +25,16 @@ const combat = {
         item: document.getElementById('item')
     },
 
+    start: function () {
+        this.load();
+        loadAbility();
+        item.equip();
+        this.renderGraphics();
+        this.elements.fight.addEventListener('click', this.preFight);
+        this.elements.flee.addEventListener('click', this.flee);
+        this.elements.item.addEventListener('click', this.item.use);
+    },
+
     load: function () {
         if (this.characterSpecs[0] === 'Zanshin') {
             combat.character = brute;
@@ -37,35 +46,19 @@ const combat = {
 
         if (this.characterSpecs[1] === 'Heavy Armor') {
             combat.item = heavyArmor;
-        }
-        if (this.characterSpecs[1] === 'Second Weapon') {
+        } else if (this.characterSpecs[1] === 'Second Weapon') {
             combat.item = secondWeapon;
-        }
-        if (this.characterSpecs[1] === 'Smoke Bomb') {
+        } else if (this.characterSpecs[1] === 'Smoke Bomb') {
             combat.item = smokeBomb;
-        }
-        if (this.characterSpecs[1] === 'Backpack') {
+        } else if (this.characterSpecs[1] === 'Backpack') {
             combat.item = backpack;
-        }
-        if (this.characterSpecs[1] === 'Healing Potion') {
+        } else if (this.characterSpecs[1] === 'Healing Potion') {
             combat.item = healingPotion;
-        }
-        if (this.characterSpecs[1] === 'Mind Control Scroll') {
+        } else if (this.characterSpecs[1] === 'Mind Control Scroll') {
             combat.item = mindControl;
         }
     },
 
-    start: function () {
-        this.load();
-        this.renderGraphics();
-        loadAbility();
-        item.equip();
-        this.elements.fight.addEventListener('click', this.preFight);
-        this.elements.flee.addEventListener('click', this.flee);
-        this.elements.item.addEventListener('click', this.item.use);
-    },
-
-    // STILL NEEDS TO UTILIZE LOCALSTORAGE DATA
     renderGraphics: function () {
         this.elements.characterImg.setAttribute('src', this.character.portrait);
         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
@@ -145,7 +138,7 @@ const combat = {
     flee: function() {
 
         // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
-        localStorage.setItem('score', [prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]);
+        localStorage.setItem(JSON.stringify('score', [prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
         
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
     
@@ -187,9 +180,13 @@ const loadAbility = function () {
         };
     } else if (combat.character.name === 'Touchstone') {
         combat.preFight = function() {
-            character.attack = randomNumber(1, 10);
-            character.defense = randomNumber(1, 10);
-            combat.fight();
+            combat.character.attack = randomNumber(1, 10);
+            combat.character.defense = randomNumber(1, 10);
+
+            combat.elements.announcement.textContent = 'Chaos Magic! Attack: ' + combat.character.attack + ' Defense: ' + combat.character.defense;
+            setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
+
+            setTimeout(combat.fight(), 1000)
         }
     }
 
