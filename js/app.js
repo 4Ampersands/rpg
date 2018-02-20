@@ -72,7 +72,6 @@ const brute = new Character (
     2,
     2,
     [new Item ('Heavy Armor'), new Item ('Second Weapon')],
-    charAbilities.healing,
     'Zanshin hails from the distant jungle kingdom of Nyissa. Born into captivity and forced to fight in gladiatorial matches his entire life, this.troll is a versatile and proficient fighter. Despite a birth defect making his knee prone to injury (dislocated 25 times!), his combat skill - which balances both offense and defense- and his natural regenerative powers make him a force to be reckoned with. He enters the contest for a chance to buy his freedom and begin life anew..'
 );
 
@@ -82,7 +81,6 @@ const rogue = new Character (
     3,
     1,
     [new Item ('Smoke Bomb'), new Item ('Backpack')],
-    charAbilities.dodge,
     'Rogue\'s parents may have been asking for trouble when they named their child "Rogue." They did their best to give her a good upbringing. And it worked, in ways: in theory, rogue is a pacifist. But more than that, she loves gold. If she can steal it without being seen, great. If not... Hey, it\'s not her fault that acquiring gold so often requires fighting to the death.'
 );
 
@@ -92,6 +90,5 @@ const wizard = new Character (
     1,
     0,
     [new Item ('Healing Potion'), new Item ('Mind Control Spell')],
-    charAbilities.chaosMagic,
     'Touchstone the Tireless is a wizard of mysterious power and unknown origin. He is well versed in the schools of conjuration, telepathy, and restoration and uses these skills to bend enemies to his will. Some legends say he gained the name Tireless because of a never ending quest to rid the world of peanuts, due to a severe allergy to them.'
 );
