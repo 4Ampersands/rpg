@@ -44,9 +44,8 @@ function buildTable () {
     tr.appendChild(td4);
     tableBody.appendChild(tr);
 
+    leaderboardArray = [];
     }
-
-
 }
 
 buildTable();
