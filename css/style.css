@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    color: gold;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin: 0 5em;
+}
+
+body p {
+    margin: 1em 1em;
+    line-height: 1.5em;
+}
+
+#title {
+    margin-top: 3em;
+}
+
+#title h1 {
+    font-size: 4em;
+    margin: 0;
+    padding: 0;
+    color: gold;
+}
+
+#title1 {
+    transform: perspective(150px) rotateX(25deg);
+}
+
+#title2 {
+    transform: perspective(150px) rotateX(-25deg);
+    
+}
+
+#menu-items {
+    list-style-type: none;
+    font-size: 1.5em;
+}
+
+#menu-items li {
+    padding: .5em 0;
+}
