@@ -3,12 +3,37 @@ body {
     background-size: 100%;
     border: 5px solid black;
     margin: 0;
-    min-height: 400px;
+    min-height: 700px;
     width: 99%;
+    color: white
 }
 
 #characterSelection {
     display: flex;
     flex-flow: row;
     justify-content: center;
+}
+
+#dungeon-button {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+#characterSpecifics {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+#bio {
+    max-width: 30%
+}
+
+#stats-items {
+    max-width: 30%
+}
+
+#descriptions {
+    max-width: 30%
 }
