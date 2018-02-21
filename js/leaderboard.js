@@ -1,27 +1,29 @@
 'use strict'
 
-//get item score 
-
-// assign that to a form that they can fill out g
 let leaderboardArray = [];
-const arrayLength = leaderboardArray.length;
+let arrayLength = leaderboardArray.length;
 let spliced = false; 
 const playerInfo = JSON.parse(localStorage.getItem('score'));
 
 if (localStorage.getItem('leaderboard')) {
     leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
-    for (let i = 0; i < arrayLength; i++) {
-        if (playerInfo[3] > leaderboardArray[i][3]) {
-            leaderboardArray.splice(i, 0, playerInfo);
-            spliced = true;
-            break;
-        } 
-    }
+
+    if (localStorage.getItem('score')) {
+        arrayLength = leaderboardArray.length;
+        for (let i = 0; i < arrayLength; i++) {
+            if (playerInfo[3] > leaderboardArray[i][3]) {
+                leaderboardArray.splice(i, 0, playerInfo);
+                spliced = true;
+                break;
+            } 
+        }
+     
+        if (spliced === false) {
+            leaderboardArray.push(playerInfo);
+        }
+    }   
 }
 
-if (spliced === false) {
-    leaderboardArray.push(playerInfo);
-}
 
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
 
@@ -44,8 +46,9 @@ function buildTable () {
     tr.appendChild(td4);
     tableBody.appendChild(tr);
 
-    leaderboardArray = [];
     }
+
+    localStorage.removeItem('score');
 }
 
 buildTable();

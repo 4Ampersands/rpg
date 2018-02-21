@@ -113,6 +113,16 @@ const combat = {
                     };
                 };
             };
+
+            this.renderGraphics = function () {
+                this.elements.characterImg.setAttribute('src', this.character.portrait);
+                this.elements.characterHP.textContent = 'HP: ' + this.character.hp + '  Barrier: ' + this.character.barrier;
+                this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
+                
+                this.elements.itemHeader.textContent = this.item.name;
+        
+                this.elements.monsterImg.setAttribute('src', this.monster.portrait);
+            };        
         };
     },
 

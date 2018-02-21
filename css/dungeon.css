@@ -46,13 +46,14 @@ img#character-img {
 }
 
 p#character-hp {
-    left: 260px;
+    left: 230px;
     bottom: 70px;
-    width: fit-content;
+    max-width: 7em;
     padding: 3px;
     font-weight: bold;
     font-size: 1.5em;
     position: relative;
+    text-align: center;
 }
 
 div#monster-div {
