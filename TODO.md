@@ -27,6 +27,7 @@
 - [X] Combat
 - [X] Items in combat
 - [X] Monster RNG (including attack, defense, gold)
+- [ ] Wizard forcefield
 
 # Leaderboard
 ## HTML
