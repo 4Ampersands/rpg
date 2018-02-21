@@ -93,7 +93,7 @@ const combat = {
                 combat.character.attack = randomNumber(1, 4);
                 combat.character.defense = randomNumber(1, 4);
     
-                combat.elements.announcement.textContent = 'Chaos Magic! Attack: ' + combat.character.attack + ' Defense: ' + combat.character.defense;
+                combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
                 setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
     
                 setTimeout(combat.fight(), 1000)

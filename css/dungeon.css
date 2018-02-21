@@ -79,7 +79,7 @@ div#gold p {
     height: fit-content;
     padding: 3px 5px;
     position: relative;
-    left: 585px;
+    left: 525px;
     text-align: center;
     width: 6em;;
 }
@@ -92,6 +92,25 @@ div#gold p {
     margin: 0;
     height: 180px;
     width: 99%;
+}
+
+#choice-container {
+    width: 60%;
+    margin: auto;
+}
+
+#fight-container, #flee-container, #item-container {
+    width: 29%;
+    float: left;
+    text-align: center;
+}
+
+#fight-container, #flee-container {
+    margin-top: 1em;
+}
+
+#item-container p {
+    margin-top: 4.5em;
 }
 
 #dungeon-choice p {
