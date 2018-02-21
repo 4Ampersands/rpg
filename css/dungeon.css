@@ -1,0 +1,118 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    text-shadow: 2px 2px black;
+}
+
+div.clear {
+    clear:both;
+}
+
+#main-dungeon {
+    background-image: url('../images/cave.png');
+    border: 5px solid black;
+    margin: 0;
+    min-height: 400px;
+    width: 99%;
+}
+
+h1 {
+    margin: 0;
+}
+
+h1#announcement {
+    text-align: center;
+    margin: 3em 0 2em 0;
+    width: 100%;
+    min-height: 2em;
+}
+
+h2 {
+    margin: 0;
+}
+
+div#character-div {
+    float: left;
+    height: 15em;
+    width: 48%;
+}
+
+img#character-img {
+    left: 200px;
+    bottom: 50px;
+    position: relative;
+    width: 200px;
+}
+
+p#character-hp {
+    left: 260px;
+    bottom: 70px;
+    width: fit-content;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 1.5em;
+    position: relative;
+}
+
+div#monster-div {
+    float: right;
+    height: 15em;
+    width: 48%;
+}
+
+img#monster-img {
+    left: 200px;
+    position: relative;
+    width: 200px;
+}
+
+div#gold {
+    font-size: 2em;
+} 
+
+div#gold p {
+    background: linear-gradient(blue, navy);
+    border: 5px solid white;
+    border-radius: 10px;
+    color: yellow;
+    height: fit-content;
+    padding: 3px 5px;
+    position: relative;
+    left: 525px;
+    text-align: center;
+    width: 6em;;
+}
+
+#dungeon-choice {
+    font-size: 2em;
+    background: linear-gradient(blue, navy);
+    border: 5px solid white;
+    border-radius: 10px;
+    margin: 0;
+    height: 180px;
+    width: 99%;
+}
+
+#choice-container {
+    width: 60%;
+    margin: auto;
+}
+
+#fight-container, #flee-container, #item-container {
+    width: 29%;
+    float: left;
+    text-align: center;
+}
+
+#fight-container, #flee-container {
+    margin-top: 1em;
+}
+
+#item-container p {
+    margin-top: 4.5em;
+}
+
+#dungeon-choice p {
+    padding: 0 5px;
+}
