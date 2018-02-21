@@ -12,6 +12,7 @@ bruteSelect.addEventListener("click", function() {
     p2.textContent = 'Special Ability: Brute heals 1 hp after every fight, keeping him heathy for the next encounter.';
     
     const stats = document.getElementById("stats-items");
+    const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
     h3.textContent = 'Attack Value: ' + brute.attack;
     const h4 = document.createElement("h2");
@@ -35,6 +36,7 @@ bruteSelect.addEventListener("click", function() {
         const select = function() {
         brute.inventory[0].equipped = true;
         brute.inventory[1].equipped = false;
+        itemDesc.textContent = "Increases your defense by 1.";
         }
         select();
     });
@@ -43,6 +45,7 @@ bruteSelect.addEventListener("click", function() {
         const select = function() {
         brute.inventory[0].equipped = false;
         brute.inventory[1].equipped = true;
+        itemDesc.textContent = "You strike first! If the monster dies, you don't take damage.";
         }
         select();
     });
@@ -60,6 +63,7 @@ rogueSelect.addEventListener("click", function() {
     p2.textContent = 'Special Ability: Rogue has a chance to dodge every attack, taking no damage for that round.';
 
     const stats = document.getElementById("stats-items");
+    const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
     h3.textContent = 'Attack Value: ' + rogue.attack;
     const h4 = document.createElement("h2");
@@ -81,6 +85,7 @@ rogueSelect.addEventListener("click", function() {
 
     itemSelect1.addEventListener("click", function () {
         const select = function() {
+        itemDesc.textContent = "One-time use to automatically win a fight without taking any damage.";
         rogue.inventory[0].equipped = true;
         rogue.inventory[1].equipped = false;
         }
@@ -89,6 +94,7 @@ rogueSelect.addEventListener("click", function() {
 
     itemSelect2.addEventListener("click", function () {
         const select = function() {
+        itemDesc.textContent = "Receive double gold rewards from monsters.";
         rogue.inventory[0].equipped = false;
         rogue.inventory[1].equipped = true;
         }
@@ -108,6 +114,7 @@ wizardSelect.addEventListener("click", function() {
     p2.textContent = 'Special Ability: Wizard draws upon the power of arcane chaos, increasing his attack and defense by random amounts for every encounter.';
 
     const stats = document.getElementById("stats-items");
+    const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
     h3.textContent = 'Attack Value: ' + wizard.attack;
     const h4 = document.createElement("h2");
@@ -132,6 +139,7 @@ wizardSelect.addEventListener("click", function() {
         const select = function() {
         wizard.inventory[0].equipped = true;
         wizard.inventory[1].equipped = false;
+        itemDesc.textContent = "One-time use to fully heal your HP.";
         }
         select();
     });
@@ -148,6 +156,7 @@ wizardSelect.addEventListener("click", function() {
 function clearCharSelect () {
     document.getElementById('bio').textContent = '';
     document.getElementById('stats-items').textContent = '';
+    document.getElementById('item-description').textContent = '';
 }
 
 const goButton = document.getElementById("goButton");
