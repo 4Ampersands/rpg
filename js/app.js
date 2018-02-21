@@ -87,7 +87,7 @@ const rogue = new Character (
 const wizard = new Character (
     'Touchstone',
     'images/wizard.png',
-    1,
+    3,
     0,
     [new Item ('Healing Potion'), new Item ('Mind Control Scroll')],
     'Touchstone the Tireless is a wizard of mysterious power and unknown origin. He is well versed in the schools of conjuration, telepathy, and restoration and uses these skills to bend enemies to his will. Some legends say he gained the name Tireless because of a never ending quest to rid the world of peanuts, due to a severe allergy to them.'
