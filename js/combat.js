@@ -192,7 +192,7 @@ const combat = {
     renderGraphics: function () {
         this.elements.characterImg.setAttribute('src', this.character.portrait);
         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
-        this.elements.characterGold.textContent = 'Gold: ' + this.character.gold;
+        this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
         
         this.elements.itemHeader.textContent = this.item.name;
 

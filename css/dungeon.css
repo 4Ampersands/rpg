@@ -23,6 +23,8 @@ h1 {
 h1#announcement {
     text-align: center;
     margin: 3em 0 2em 0;
+    width: 100%;
+    min-height: 2em;
 }
 
 h2 {
@@ -30,31 +32,44 @@ h2 {
 }
 
 div#character-div {
-    border: 1px solid red;
+    float: left;
     height: 15em;
     width: 48%;
-    float: left;
 }
 
 img#character-img {
+    left: 300px;
+    top: 50px;
+    position: relative;
     width: 100px;
 }
 
+p#character-hp {
+    left: 310px;
+    top: 50px;
+    width: fit-content;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 1.5em;
+    position: relative;
+}
+
 div#monster-div {
-    border: 1px solid red;
     float: right;
     height: 15em;
     width: 48%;
 }
 
 img#monster-img {
+    left: 200px;
+    top: 80px;
+    position: relative;
     width: 100px;
 }
 
 div#gold {
-    font-size: 3em;
-    margin: 0;
-    width: 100%;
+    font-size: 2em;
+    margin: 1em 0 0 0;
 } 
 
 div#gold p {
@@ -63,8 +78,9 @@ div#gold p {
     border-radius: 10px;
     color: yellow;
     height: fit-content;
-    margin: 0 auto;
     padding: 3px 5px;
+    position: relative;
+    left: 585px;
     text-align: center;
     width: 6em;;
 }
@@ -74,6 +90,6 @@ div#gold p {
     border: 5px solid white;
     border-radius: 10px;
     margin: 0;
-    min-height: 200px;
+    min-height: 180px;
     width: 99%;
 }
