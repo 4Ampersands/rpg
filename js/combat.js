@@ -136,9 +136,11 @@ const combat = {
             this.elements.itemHeader.textContent = (this.item.name + ' equipped. +1 armor');
 
         } else if (combat.item.name === 'Second Weapon') {
-            this.elements.itemHeader.textContent = (this.item.name) + ' equipped. You strike first!';
+            this.elements.itemHeader.textContent = (this.item.name) + ' equipped. 50% chance to strike first!';
 
-            combat.fight = function() {
+            combat.fightFirst = function() {
+                this.elements.announcement.textContent = "First strike!";
+
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
                     
                     this.characterAttack();
@@ -152,7 +154,7 @@ const combat = {
                     this.monsterAttack();
                     
                     if (this.character.hp <= 0 ) {
-                        // PLAYER DIES ANIMATION
+                        combat.elements.announcement.textContent = "YOU HAVE DIED";
     
                         setTimeout(function() {window.location.replace('bar.html')}, 1000);
                         continue;
@@ -161,6 +163,18 @@ const combat = {
     
                 setTimeout(this.reset(), 1000);
             };
+
+            combat.preFight = function() {
+                combat.elements.announcement.textContent = "";
+                const random = randomNumber (1,100);
+
+                if (random < 25) {
+                    combat.fight();
+                } else if (random >= 25) {
+                    combat.fightFirst();
+                }            
+            };
+
         } else if (combat.item.name === 'Backpack') {
             combat.fight = function() {
                 this.elements.itemHeader.textContent = (this.item.name + ' equipped. Double gold!');
@@ -260,7 +274,7 @@ const combat = {
                 combat.elements.announcement.textContent = 'YOU DIED';
                 setTimeout(function() {
                     window.location.replace('bar.html')
-                }, 2000);
+                }, 5000);
                 continue;
             }
             
@@ -273,7 +287,7 @@ const combat = {
             }
         }
         
-        setTimeout(combat.reset(), 1000);
+        setTimeout(combat.reset(), 3000);
 
     },
 
