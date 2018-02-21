@@ -22,7 +22,7 @@ const combat = {
         dungeonChoice: document.getElementById('dungeon-choice'),
         fight: document.getElementById('fight'),
         flee: document.getElementById('flee'),
-        item: document.getElementById('item')
+        itemHeader: document.getElementById('item')
     },
 
     start: function () {
@@ -32,6 +32,7 @@ const combat = {
         this.renderGraphics();
         this.elements.fight.addEventListener('click', this.preFight);
         this.elements.flee.addEventListener('click', this.flee);
+        this.elements.itemHeader.addEventListener('click', combat.item.use);
     },
 
     load: function () {
@@ -107,16 +108,15 @@ const combat = {
             combat.character.portrait = 'images/brutearmor.jpeg';
             combat.elements.characterImg.setAttribute('src', combat.character.portrait);
 
-            this.elements.item.textContent = (this.item.name + ' equipped. +1 armor');
+            this.elements.itemHeader.textContent = (this.item.name + ' equipped. +1 armor');
 
         } else if (combat.item.name === 'Second Weapon') {
-            this.elements.item.textContent = (this.item.name) + ' equipped. You strike first!';
+            this.elements.itemHeader.textContent = (this.item.name) + ' equipped. You strike first!';
 
             combat.fight = function() {
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
                     
                     this.characterAttack();
-    
                     if (this.monster.hp <=0) {
                         // MONSTER DIES ANIMATION
                         this.character.gold += this.monster.gold;
@@ -136,9 +136,9 @@ const combat = {
     
                 setTimeout(this.reset(), 1000);
             };
-        } else if (item.name === 'Backpack') {
+        } else if (combat.item.name === 'Backpack') {
             combat.fight = function() {
-                this.elements.item.textContent = (this.item.name + ' equipped. Double gold!');
+                this.elements.itemHeader.textContent = (this.item.name + ' equipped. Double gold!');
 
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
         
@@ -163,24 +163,23 @@ const combat = {
                 setTimeout(combat.reset(), 1000);
         
             };
-        } else if (combat.item.name === 'Smoke Bomb') {
-            item.use = function() {
-                this.elements.item.addEventListener('click', item.use);
-                this.elements.item.textContent = (this.item.name + ' available. Click to use.');
-
-                combat.character.gold += (combat.monster.gold * 2);
-                combat.elements.announcement.textContent = 'Smoke Bomb used!';
-                combat.monstersDefeated++;
-    
-                setTimeout(combat.reset(), 1000);
+        } else if (combat.item.name === 'Smoke Bomb') {    
+            combat.item.use = function() {
+                    combat.character.gold += (combat.monster.gold * 2);
+                    combat.elements.announcement.textContent = 'Smoke Bomb used!';
+                    combat.monstersDefeated++;
+                    combat.elements.itemHeader.textContent = "";
+                    
+                    setTimeout(combat.reset(), 1000);
             }
         } else if (combat.item.name === 'Healing Potion') {
-            item.use = function() {
+            combat.item.use = function () {
                 if (combat.item.used === false) {
                     combat.item.used = true;
+                    combat.elements.itemHeader.textContent = "";
                     
                     combat.character.hp = 10;
-    
+                    
                     combat.elements.announcement.textContent = 'Healing Potion used. Health fully restored!';
                     
                     combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;                
@@ -195,6 +194,8 @@ const combat = {
         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
         this.elements.characterGold.textContent = 'Gold: ' + this.character.gold;
         
+        this.elements.itemHeader.textContent = this.item.name;
+
         this.elements.monsterImg.setAttribute('src', this.monster.portrait);
     },
 
@@ -232,7 +233,7 @@ const combat = {
                 // PLAYER DIES ANIMATION
                 this.elements.fight.removeEventListener('click', this.preFight);
                 this.elements.flee.removeEventListener('click', this.flee);
-                this.elements.item.removeEventListener('click', this.useItem);
+                this.elements.itemHeader.removeEventListener('click', this.useItem);
                 combat.elements.announcement.textContent = 'YOU DIED';
                 setTimeout(function() {
                     window.location.replace('bar.html')
