@@ -1,7 +1,7 @@
 body {
     background-color: black;
     color: white;
-    font-family: monospace;
+    font-family: 'Press Start 2P', cursive;
     text-shadow: 2px 2px black;
 }
 
@@ -106,12 +106,8 @@ div#gold p {
     text-align: center;
 }
 
-#fight-container, #flee-container {
-    margin-top: 1em;
-}
-
 #item-container p {
-    margin-top: 4.5em;
+    margin-top: 2.5em;
 }
 
 #dungeon-choice p {
