@@ -126,7 +126,7 @@ const combat = {
                 this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
                 
                 this.elements.itemHeader.textContent = this.item.name;
-        
+
                 this.elements.monsterImg.setAttribute('src', this.monster.portrait);
             };        
         };
@@ -196,12 +196,16 @@ const combat = {
             };
         } else if (combat.item.name === 'Smoke Bomb') {    
             combat.item.use = function() {
-                    combat.character.gold += (combat.monster.gold);
-                    combat.elements.announcement.textContent = 'Smoke Bomb used!';
-                    combat.monstersDefeated++;
-                    combat.elements.itemHeader.textContent = "";
-                    
-                    setTimeout(combat.reset(), 1000);
+                    if (combat.item.used === false) {
+                        combat.item.used = true;
+
+                        combat.character.gold += (combat.monster.gold);
+                        combat.elements.announcement.textContent = 'Smoke Bomb used!';
+                        combat.monstersDefeated++;
+                        combat.elements.itemHeader.textContent = "";
+                        
+                        setTimeout(combat.reset(), 1000);
+                    }
             }
         } else if (combat.item.name === 'Healing Potion') {
             combat.item.use = function () {
