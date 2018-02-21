@@ -98,7 +98,38 @@ const combat = {
     
                 setTimeout(combat.fight(), 1000)
             }
-        }
+
+            this.character.barrier = 20;
+
+            this.monsterAttack = function() {
+                const damage = combat.monster.attack - combat.character.defense;
+                if (damage > 0) {
+                    if (combat.character.barrier > 0) {
+                        combat.character.barrier -= damage;
+                        combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp + '  Barrier: ' + combat.character.barrier;
+                    } else if (combat.character.barrier <= 0) {
+                        combat.character.hp -= damage;
+                        combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;
+                    };
+                };
+            };
+
+            this.renderGraphics = function () {
+                this.elements.characterImg.setAttribute('src', this.character.portrait);
+
+                if (combat.character.barrier > 0) {
+                    this.elements.characterHP.textContent = 'HP: ' + this.character.hp + '  Barrier: ' + this.character.barrier;
+                } else if (combat.character.barrier <= 0) {
+                    this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+                    
+                }
+                this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
+                
+                this.elements.itemHeader.textContent = this.item.name;
+        
+                this.elements.monsterImg.setAttribute('src', this.monster.portrait);
+            };        
+        };
     },
 
     equipItem: function() {
@@ -203,10 +234,8 @@ const combat = {
         let random;
         if (combat.monstersDefeated < 4) {
             random = randomNumber(1, 2);
-        } else if (combat.monstersDefeated === 4 || combat.monstersDefeated === 5) {
+        } else if (combat.monstersDefeated >= 4) {
             random = randomNumber(1, 3);
-        } else if (combat.monstersDefeated >=6) {
-            random = 3;
         }
         
         if (random === 1 ) {
