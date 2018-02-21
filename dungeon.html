@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dungeon.css" />
     <title>Document</title>
 </head>
 
 <body>
     <section id="main-dungeon">
-        <h1>Dungeon</h1>
-
-        <h1 id="announcement"></h1>
+        <h1 id="announcement">(Announcement)</h1>
         <div id="character-div">
-            <img width="100px" alt="Character Image" id="character-img">
+            <img alt="Character Image" id="character-img">
             <p id="character-hp"></p>
-            <p id="character-gold"></p>
         </div>
 
         <div id="monster-div">
-            <img width="100px" alt="Monster Image" id="monster-img">
+            <img alt="Monster Image" id="monster-img">
+        </div>
+
+        <div class="clear"></div>
+
+        <div id="gold">
+            <p id="character-gold">GOLD</p>
         </div>
     </section>
 
     <section id="dungeon-choice">
-        <h1>Select Your Choice</h1>
-
         <h2 id="fight">Stand and Fight!</h2>
 
         <h2 id="flee">Flee to live another day!</h2>

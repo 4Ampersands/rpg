@@ -4,27 +4,25 @@
 
 // assign that to a form that they can fill out g
 let leaderboardArray = [];
-if (localStorage.getItem('leaderboard')) {
-    leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
-}
-
 const arrayLength = leaderboardArray.length;
 let spliced = false; 
-
 const playerInfo = JSON.parse(localStorage.getItem('score'));
-console.log(playerInfo)
-for (let i = 0; i < arrayLength; i++) {
-    if (playerInfo[3] > leaderboardArray[i][3]) {
-        leaderboardArray.splice(i, 0, playerInfo);
-        spliced = true;
-        break;
-    } 
+
+if (localStorage.getItem('leaderboard')) {
+    leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
+    for (let i = 0; i < arrayLength; i++) {
+        if (playerInfo[3] > leaderboardArray[i][3]) {
+            leaderboardArray.splice(i, 0, playerInfo);
+            spliced = true;
+            break;
+        } 
+    }
 }
 
 if (spliced === false) {
     leaderboardArray.push(playerInfo);
 }
-console.log(leaderboardArray);
+
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
 
 function buildTable () {
