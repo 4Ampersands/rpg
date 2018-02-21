@@ -14,9 +14,10 @@ let spliced = false;
 const playerInfo = JSON.parse(localStorage.getItem('score'));
 console.log(playerInfo)
 for (let i = 0; i < arrayLength; i++) {
-    if (playerInfo[3] >= leaderboardArray[i][3]) {
+    if (playerInfo[3] > leaderboardArray[i][3]) {
         leaderboardArray.splice(i, 0, playerInfo);
         spliced = true;
+        break;
     } 
 }
 

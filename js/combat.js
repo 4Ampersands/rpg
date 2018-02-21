@@ -165,7 +165,7 @@ const combat = {
             };
         } else if (combat.item.name === 'Smoke Bomb') {    
             combat.item.use = function() {
-                    combat.character.gold += (combat.monster.gold * 2);
+                    combat.character.gold += (combat.monster.gold);
                     combat.elements.announcement.textContent = 'Smoke Bomb used!';
                     combat.monstersDefeated++;
                     combat.elements.itemHeader.textContent = "";
