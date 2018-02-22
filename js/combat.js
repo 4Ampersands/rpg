@@ -84,7 +84,7 @@ const combat = {
                         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;    
                     };
                 } else if (random >= 51 ) {
-                    combat.elements.announcement.textContent = 'Dodged!';
+                    combat.elements.announcement.textContent = 'Dodged! No damage!';
                     setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
                 }
             };
@@ -145,7 +145,7 @@ const combat = {
             this.elements.itemHeader.textContent = (this.item.name) + ' equipped. 50% chance to strike first!';
 
             combat.fightFirst = function() {
-                this.elements.announcement.textContent = "First strike!";
+                this.elements.announcement.textContent = "First strike! No damage taken!";
 
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
                     
@@ -214,7 +214,7 @@ const combat = {
                         combat.item.used = true;
 
                         combat.character.gold += (combat.monster.gold);
-                        combat.elements.announcement.textContent = 'Smoke Bomb used!';
+                        combat.elements.announcement.textContent = 'Smoke Bomb used! Automatic win!';
                         combat.monstersDefeated++;
                         combat.elements.itemHeader.textContent = "";
                         
@@ -229,7 +229,7 @@ const combat = {
                     
                     combat.character.hp = 10;
                     
-                    combat.elements.announcement.textContent = 'Healing Potion used. Health fully restored!';
+                    combat.elements.announcement.textContent = 'Healing Potion used! Health fully restored!';
                     
                     combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;                
                 };
