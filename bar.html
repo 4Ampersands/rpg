@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400i|Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="css/bar.css" />
+    <title>Choose your Character</title>
 </head>
 <body>
-    <section id="backgroundBar">
-        <h1>Background Bar</h1>
-        <button><a href="index.html">Back to Main Page</a></button>
-    </section>
-    <section id="characterSelection">
-        <div>
-            <img src="images/brute.png" alt="photo of brute" id="brute" width="150px" height="150px">
-        </div>
-        <div>
-            <img src="images/rogue.png" alt="photo of rogue" id="rogue" width="150px" height="150px">
-        </div>
-        <div>
-            <img src="images/wizard.png" alt="photo of wizard"  id="wizard" width="150px" height="150px">
-        </div>
-    </section>
-    <section>
-        <button id="goButton"><a id="link">Go to the Dungeon!</a></button>
-    </section>
-    <section id="characterSpecifics">
-        <div id="bio">
-        </div>
-        <div id="stats-items">
-        </div>
-        <div>
-            <p id="item-description"></p>            
-        </div>
-    </section>
+    <main id="bar-main">
+        <section id="backgroundBar">
+            <h1>Alchemist's Tavern</h1>
+        </section>
+        <section id="characterSelection">
+            <div>
+                <img src="images/brute.png" alt="photo of brute" id="brute" class="character-image" width="200px" height="350px">
+            </div>
+            <div>
+                <img src="images/rogue.png" alt="photo of rogue" id="rogue" class="character-image" width="200px" height="350px">
+            </div>
+            <div>
+                <img src="images/wizard.png" alt="photo of wizard"  id="wizard" class="character-image" width="200px" height="350px">
+            </div>
+        </section>
+        <section id="dungeon-button">
+            <h2 id="goButton"><a id="link">Go to the Dungeon!</a></h2>
+        </section>
+        <section id="characterSpecifics">
+            <div id="bio">
+            </div>
+            <div id="stats-items">
+            </div>
+            <div id="descriptions">
+                <p id="item-description"></p>            
+            </div>
+        </section>
+    </main>
     <script src = "js/app.js"></script>
     <script src = "js/characterSelector.js"></script>
 </body>
