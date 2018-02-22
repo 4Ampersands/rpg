@@ -1,6 +1,7 @@
 html {
-    background-image: url("../images/tavern1.jpg");
-    height: 110%;
+    background-image: url("../images/tavern3.jpg");
+    background-size: 110%;
+    height: 100%;
 }
 
 body {
@@ -27,6 +28,7 @@ body {
 table {
     width: 450px;
     margin-top: 10px;
+    height: 400px;
 }
 
 th, td {
