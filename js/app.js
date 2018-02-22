@@ -3,14 +3,6 @@ const randomNumber = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// CHARACTER CONSTRUCTOR
-// name should be their name.
-// portrait should be a path to a character portrait as a string
-// inventory should be a Item
-// attack and defense should be integers
-// ability should be a method of the Character.prototype object
-// bio should be a short bio of the character as a string
-
 function Character (name, portrait, attack, defense, inventory, bio) {
     this.name = name;
     this.portrait = portrait;
@@ -24,18 +16,6 @@ function Character (name, portrait, attack, defense, inventory, bio) {
     this.hp = 10;
     this.isActive = false;
 };
-
-Character.prototype.attack = function() {
-    // initiate direct combat with enemy
-};
-
-Character.prototype.useItem = function () {
-    // use inventory item
-}
-
-Character.prototype.run = function () {
-    // end the game and apply sore to high score table
-}
 
 // ITEMS
 function Item (name) {

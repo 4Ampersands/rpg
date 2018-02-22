@@ -7,23 +7,33 @@ body {
 }
 
 #title {
-    margin-top: 3em;
+    margin-top: 7em;
 }
 
 #title h1 {
     font-size: 6em;
     margin: 0;
     padding: 0;
-    color: gold;
-}
+    }
 
 #title1 {
+    background: linear-gradient(red, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     transform: perspective(150px) rotateX(25deg);
 }
 
 #title2 {
+    background: linear-gradient(yellow, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     transform: perspective(150px) rotateX(-25deg);
     
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
 }
 
 #menu-items {
