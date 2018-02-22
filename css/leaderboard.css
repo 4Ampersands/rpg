@@ -1,0 +1,54 @@
+/* html {
+    background-image: 
+} */
+
+body {
+    background-image: url("../images/scroll.jpg");
+    background-size: 41%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: crimson;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#leaderboardTable {
+    font-size: 150%;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+table {
+    width: 450px;
+    margin-top: 50px;
+}
+
+th, td {
+    padding: 10px 10px 10px px;
+    text-align: center;
+}
+
+#leaderboardTitle {
+    font-family: 'Tangerine', cursive;
+    font-size: 300%;
+    margin-top: 78px;
+}
+
+/* button {
+   position: fixed;
+   position: top;
+} */
+
+#tableRow {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 120%;
+}
+
+#leaderboard {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
