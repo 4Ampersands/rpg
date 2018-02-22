@@ -6,49 +6,58 @@ html {
 
 body {
     background-image: url("../images/scroll.jpg");
-    background-size: 41%;
+    background-size: 45%;
     background-repeat: no-repeat;
     background-position: center top;
-    color: rgb(155, 7, 37);
+    background-position: fixed;    
+    font-family: 'Nothing You Could Do', cursive;
+    color: blue;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-
 }
 
 #leaderboardTable {
     font-size: 150%;
     font-weight: bold;
-    font-family: 'Nothing You Could Do', cursive;
     text-align: center;
-}
+    table-layout: fixed;
+    }
 
 table {
     width: 450px;
     margin-top: 10px;
 }
 
-th, td {
+td {
     text-align: center;
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
 #leaderboardTitle {
-    font-family: 'Tangerine', cursive;
-    font-size: 300%;
+    font-size: 175%;
+    margin-top: -40px;
+    /* width: 50%; */
+    position: top, fixed;
+    display: flex;
+    justify-content: center;
 }
 
 button {
-   position: fixed;
-   top: 94%;
+    position: fixed;
+    top: 94%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center
 }
 
 #tableRow {
-    font-family: 'Nothing You Could Do', cursive;
     font-size: 120%;
+    text-transform: uppercase;
 }
 
 #leaderboard {
@@ -56,4 +65,8 @@ button {
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+tableFoot {
+    position: fixed;
 }

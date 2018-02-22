@@ -28,7 +28,7 @@ if (localStorage.getItem('leaderboard')) {
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
 
 function buildTable () {
-    for (let i = 0; i < leaderboardArray.length; i++) {
+    for (let i = 0; i < 7; i++) {
     const tableBody = document.getElementById('leaderboardTable');
     const tr = document.createElement('tr');
     tr.className = 'tableRow';
