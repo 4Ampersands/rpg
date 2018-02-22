@@ -1,0 +1,59 @@
+html {
+    background-image: url("../images/tavern3.jpg");
+    background-size: 110%;
+    height: 100%;
+}
+
+body {
+    background-image: url("../images/scroll.jpg");
+    background-size: 41%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: rgb(155, 7, 37);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+#leaderboardTable {
+    font-size: 150%;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive;
+    text-align: center;
+}
+
+table {
+    width: 450px;
+    margin-top: 10px;
+}
+
+th, td {
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#leaderboardTitle {
+    font-family: 'Tangerine', cursive;
+    font-size: 300%;
+}
+
+button {
+   position: fixed;
+   top: 94%;
+}
+
+#tableRow {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 120%;
+}
+
+#leaderboard {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
