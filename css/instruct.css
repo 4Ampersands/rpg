@@ -1,0 +1,59 @@
+html {
+    background-image: url('../images/tavern2.jpg');
+    background-size: 110%;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.808);
+    margin: 0;
+    min-height: 700px;
+    width: 99%;
+    height: 99%;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 20px
+}
+
+body h1 {
+    text-align: center;
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding-top: 10px
+}
+
+#how-to {
+    text-decoration: underline
+}
+
+#instruct {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 12px
+}
+
+#play-button {
+    background: linear-gradient(blue, navy);
+    padding: 12px;
+    border-radius: 10px;
+    font-family: 'Covered By Your Grace', cursive;
+    cursor: pointer;
+   
+}
+
+#play-button a {
+    text-decoration: none;
+    color: white
+}
+
+#play-button:hover {
+    box-shadow:
+        1px 1px white,
+        2px 2px white,
+        3px 3px white;
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px)
+}
