@@ -1,0 +1,124 @@
+html {
+    background-image: url('../images/tavern2.jpg');
+    background-size: 110%;
+}
+
+
+body {
+    /* background-image: url('../images/tavern2.jpg');
+    background-size: 110%; */
+    background: rgba(0, 0, 0, 0.507);
+    margin: 0;
+    min-height: 700px;
+    width: 99%;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#backgroundBar h1 {
+    font-size: 85px;
+    margin-top: 0;
+    text-align: center;
+    font-family: 'Covered By Your Grace', cursive;
+}
+
+
+#characterSelection {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 400px
+}
+
+.character-image {
+    cursor: pointer;
+}
+
+#dungeon-button {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center
+}
+
+#goButton {
+    background: linear-gradient(blue, navy);
+    padding: 12px;
+    border-radius: 10px;
+    font-family: 'Covered By Your Grace', cursive;
+    cursor: pointer;
+   
+}
+
+#goButton:hover {
+    box-shadow:
+        1px 1px white,
+        2px 2px white,
+        3px 3px white;
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px)
+}
+
+#characterSpecifics {
+    margin-top: 4em;
+    max-height: 400px;       
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: stretch;
+    
+}
+
+#bio {
+    width: 50%;
+    background: rgba(0, 0, 0, 0.75);
+    border: 5px solid white;
+    border-radius: 10px;
+    padding: 40px; 
+}
+
+#stats-items {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    width: 25%;
+    border: 5px solid white;
+    border-radius: 10px;
+    padding: 40px; 
+}
+
+#stats-items button {
+    cursor: pointer;
+}
+
+#descriptions {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    width: 25%;
+    border: 5px solid white;
+    border-radius: 10px;
+    padding: 40px; 
+    font-size: 30px
+}
+
+/* #bio.hidden {
+    display: none;
+}
+
+#stats-items.hidden {
+    display: none;
+}
+
+#descriptions.hidden {
+    display: none;
+} */
+
+/* #item-desriptions {
+    font-size: 20px
+} */
