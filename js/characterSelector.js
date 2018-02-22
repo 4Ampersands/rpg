@@ -18,14 +18,14 @@ bruteSelect.addEventListener("click", function() {
     const p = document.createElement("p");
     const p2 = document.createElement("p");
     p.textContent = brute.bio;
-    p2.textContent = 'Special Ability: Brute heals 1 hp after every fight, keeping him heathy for the next encounter.';
+    p2.textContent = 'Special Ability: Zanshin heals 1 hp after every fight, keeping him heathy for the next encounter.';
     
     const stats = document.getElementById("stats-items");
     const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
-    h3.textContent = 'Attack Value: ' + brute.attack;
+    h3.textContent = 'Attack Value: Medium';
     const h4 = document.createElement("h2");
-    h4.textContent = 'Defense Value: ' + brute.defense;
+    h4.textContent = 'Defense Value: Medium';
     const itemSelect1 = document.createElement("button");
     const itemSelect2 = document.createElement("button");
     itemSelect1.idName = "item-select1";
@@ -80,9 +80,9 @@ rogueSelect.addEventListener("click", function() {
     const stats = document.getElementById("stats-items");
     const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
-    h3.textContent = 'Attack Value: ' + rogue.attack;
+    h3.textContent = 'Attack Value: High';
     const h4 = document.createElement("h2");
-    h4.textContent = 'Defense Value: ' + rogue.defense;
+    h4.textContent = 'Defense Value: Low';
     const itemSelect1 = document.createElement("button");
     const itemSelect2 = document.createElement("button");
     itemSelect1.className = "item-select";
@@ -131,14 +131,14 @@ wizardSelect.addEventListener("click", function() {
     const p = document.createElement("p");
     const p2 = document.createElement("p2");
     p.textContent = wizard.bio;
-    p2.textContent = 'Special Ability: Wizard draws upon the power of arcane chaos, increasing his attack and defense by random amounts for every encounter.';
+    p2.textContent = 'Special Ability: Touchstone draws upon the power of arcane chaos, increasing his attack and defense by random amounts for every encounter. He also creates a force-field that adds an extra 20hp';
 
     const stats = document.getElementById("stats-items");
     const itemDesc = document.getElementById("item-description");
     const h3 = document.createElement("h2");
-    h3.textContent = 'Attack Value: ' + wizard.attack;
+    h3.textContent = 'Attack Value: Low';
     const h4 = document.createElement("h2");
-    h4.textContent = 'Defense Value: ' + wizard.defense;
+    h4.textContent = 'Defense Value: None';
     const itemSelect1 = document.createElement("button");
     // const itemSelect2 = document.createElement("button");
     itemSelect1.className = "item-select";
@@ -159,7 +159,7 @@ wizardSelect.addEventListener("click", function() {
         const select = function() {
         wizard.inventory[0].equipped = true;
         wizard.inventory[1].equipped = false;
-        itemDesc.textContent = "One-time use to fully heal your HP.";
+        itemDesc.textContent = "One-time use to fully restore your HP.";
         }
         select();
     });
