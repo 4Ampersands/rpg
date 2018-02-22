@@ -31,6 +31,7 @@ function buildTable () {
     for (let i = 0; i < leaderboardArray.length; i++) {
     const tableBody = document.getElementById('leaderboardTable');
     const tr = document.createElement('tr');
+    tr.className = 'tableRow';
     const td1 = document.createElement('td');
     td1.textContent = leaderboardArray[i][0];
     const td2= document.createElement('td');
