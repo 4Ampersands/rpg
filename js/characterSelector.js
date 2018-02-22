@@ -1,7 +1,16 @@
 "use strict"
 
+const hide = document.getElementsByClassName("hidden");
+
 const bruteSelect = document.getElementById("brute");
 bruteSelect.addEventListener("click", function() {
+    
+    // if (hide[0].classList.contains("hidden")) {
+    //     for (let i = 0; i <= hide.length; i++) {
+    //         hide[i].classList.remove("hidden");
+    //     }
+    // }
+    
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -49,10 +58,16 @@ bruteSelect.addEventListener("click", function() {
         }
         select();
     });
+
 });
 
 const rogueSelect = document.getElementById("rogue");
 rogueSelect.addEventListener("click", function() {
+    // if (hide[0].classList.contains("hidden")) {
+    //     for (let i = 0; i <= hide.length; i++) {
+    //         hide[i].classList.remove("hidden");
+    //     }
+    // }
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -104,6 +119,11 @@ rogueSelect.addEventListener("click", function() {
 
 const wizardSelect = document.getElementById("wizard");
 wizardSelect.addEventListener("click", function() {
+    // if (hide[0].classList.contains("hidden")) {
+    //     for (let i = 0; i <= hide.length; i++) {
+    //         hide[i].classList.remove("hidden");
+    //     }
+    // }
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -143,14 +163,6 @@ wizardSelect.addEventListener("click", function() {
         }
         select();
     });
-
-    // itemSelect2.addEventListener("click", function () {
-    //     const select = function() {
-    //     wizard.inventory[0].equipped = false;
-    //     wizard.inventory[1].equipped = true;
-    //     }
-    //     select();
-    // });
 });
 
 function clearCharSelect () {
