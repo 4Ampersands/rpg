@@ -36,10 +36,10 @@ th, td {
     margin-top: 78px;
 }
 
-/* button {
+button {
    position: fixed;
-   position: top;
-} */
+   top: 94%;
+}
 
 #tableRow {
     font-family: 'Nothing You Could Do', cursive;
