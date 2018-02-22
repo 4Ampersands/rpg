@@ -8,18 +8,14 @@ const combat = {
     monstersDefeated: 0,
 
     elements: {
-        mainDungeon: document.getElementById('main-dungeon'),
         announcement: document.getElementById('announcement'),
 
-        characterDiv: document.getElementById('character-div'),
         characterImg: document.getElementById('character-img'),
         characterHP: document.getElementById('character-hp'),
         characterGold: document.getElementById('character-gold'),
-        
-        monsterDiv: document.getElementById('monster-div'),
+
         monsterImg: document.getElementById('monster-img'),
         
-        dungeonChoice: document.getElementById('dungeon-choice'),
         fight: document.getElementById('fight'),
         flee: document.getElementById('flee'),
         itemHeader: document.getElementById('item')
@@ -29,6 +25,9 @@ const combat = {
         this.load();
         this.loadAbility();
         this.equipItem();
+
+        this.elements.characterImg.setAttribute('src', this.character.portrait);
+
         this.renderGraphics();
         this.elements.fight.addEventListener('click', this.preFight);
         this.elements.flee.addEventListener('click', this.flee);
@@ -70,7 +69,7 @@ const combat = {
                 if (combat.character.hp <= 10) {
                     combat.character.hp += 1;
                     combat.elements.announcement.textContent = 'Healed 1hp';
-                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
+                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
                 }
                 combat.fight();
             };       
@@ -85,18 +84,17 @@ const combat = {
                     };
                 } else if (random >= 51 ) {
                     combat.elements.announcement.textContent = 'Dodged! No damage!';
-                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
+                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
                 }
             };
         } else if (combat.character.name === 'Touchstone') {
             combat.preFight = function() {
-                combat.character.attack = randomNumber(1, 4);
                 combat.character.defense = randomNumber(1, 4);
     
                 combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
-                setTimeout(function() {combat.elements.announcement.textContent = "";}, 1000);
+                setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
     
-                setTimeout(combat.fight(), 1000)
+                combat.fight();
             }
 
             this.character.barrier = 20;
@@ -136,13 +134,11 @@ const combat = {
         if (combat.item.name === 'Heavy Armor') {
     
             combat.character.defense = 3;
-            combat.character.portrait = 'images/brutearmor.jpeg';
-            combat.elements.characterImg.setAttribute('src', combat.character.portrait);
 
-            this.elements.itemHeader.textContent = (this.item.name + ' equipped. +1 armor');
+            this.elements.itemHeader.textContent = (this.item.name + ' equipped.');
 
         } else if (combat.item.name === 'Second Weapon') {
-            this.elements.itemHeader.textContent = (this.item.name) + ' equipped. 50% chance to strike first!';
+            this.elements.itemHeader.textContent = (this.item.name + ' equipped. First strike chance!');
 
             combat.fightFirst = function() {
                 this.elements.announcement.textContent = "First strike! No damage taken!";
@@ -151,7 +147,6 @@ const combat = {
                     
                     this.characterAttack();
                     if (this.monster.hp <=0) {
-                        // MONSTER DIES ANIMATION
                         this.character.gold += this.monster.gold;
                         combat.monstersDefeated++;
                         continue;
@@ -162,53 +157,52 @@ const combat = {
                     if (this.character.hp <= 0 ) {
                         combat.elements.announcement.textContent = "YOU HAVE DIED";
     
-                        setTimeout(function() {window.location.replace('bar.html')}, 1000);
+                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
                         continue;
                     };                
                 };
     
-                setTimeout(this.reset(), 1000);
+                this.reset();
             };
 
             combat.preFight = function() {
                 combat.elements.announcement.textContent = "";
                 const random = randomNumber (1,100);
 
-                if (random < 25) {
+                if (random < 50) {
                     combat.fight();
-                } else if (random >= 25) {
+                } else if (random >= 50) {
                     combat.fightFirst();
                 }            
             };
 
         } else if (combat.item.name === 'Backpack') {
+            this.elements.itemHeader.textContent = (this.item.name + ' equipped. Double gold!');
+
             combat.fight = function() {
-                this.elements.itemHeader.textContent = (this.item.name + ' equipped. Double gold!');
 
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
         
                     combat.monsterAttack();
                     
                     if (combat.character.hp <= 0 ) {
-                        // PLAYER DIES ANIMATION
-                        setTimeout(function() {
-                            window.location.replace('bar.html')
-                        }, 1000);
+                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
                         continue;
                     }
                     
                     combat.characterAttack();
         
                     if (combat.monster.hp <=0) {
-                        // MONSTER DIES ANIMATION
                         combat.character.gold += (combat.monster.gold * 2);
                     }
                 }
                 
-                setTimeout(combat.reset(), 1000);
+                setTimeout(combat.reset(), 1500);
         
             };
         } else if (combat.item.name === 'Smoke Bomb') {    
+            this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
+
             combat.item.use = function() {
                     if (combat.item.used === false) {
                         combat.item.used = true;
@@ -218,10 +212,12 @@ const combat = {
                         combat.monstersDefeated++;
                         combat.elements.itemHeader.textContent = "";
                         
-                        setTimeout(combat.reset(), 1000);
+                        setTimeout(combat.reset(), 1500);
                     }
             }
         } else if (combat.item.name === 'Healing Potion') {
+            this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
+
             combat.item.use = function () {
                 if (combat.item.used === false) {
                     combat.item.used = true;
@@ -230,29 +226,26 @@ const combat = {
                     combat.character.hp = 10;
                     
                     combat.elements.announcement.textContent = 'Healing Potion used! Health fully restored!';
-                    
-                    combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;                
-                };
+
+                    combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;
+                }
             };
         };
     
     },
 
     renderGraphics: function () {
-        this.elements.characterImg.setAttribute('src', this.character.portrait);
         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
         this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
         
-        this.elements.itemHeader.textContent = this.item.name;
-
         this.elements.monsterImg.setAttribute('src', this.monster.portrait);
     },
 
     createMonster: function () {    
         let random;
-        if (combat.monstersDefeated < 4) {
+        if (combat.monstersDefeated < 5) {
             random = randomNumber(1, 2);
-        } else if (combat.monstersDefeated >= 4) {
+        } else if (combat.monstersDefeated >= 5) {
             random = randomNumber(1, 3);
         }
         
@@ -275,29 +268,26 @@ const combat = {
         while (combat.character.hp > 0 && combat.monster.hp > 0) {
 
             combat.monsterAttack();
-            
+
             if (combat.character.hp <= 0 ) {
-                // PLAYER DIES ANIMATION
                 this.elements.fight.removeEventListener('click', this.preFight);
                 this.elements.flee.removeEventListener('click', this.flee);
                 this.elements.itemHeader.removeEventListener('click', this.useItem);
                 combat.elements.announcement.textContent = 'YOU DIED';
-                setTimeout(function() {
-                    window.location.replace('bar.html')
-                }, 1000);
+                setTimeout(function() {window.location.replace('bar.html')}, 1500);
                 continue;
             }
-            
+
             combat.characterAttack();
 
             if (combat.monster.hp <=0) {
-                // MONSTER DIES ANIMATION
                 combat.character.gold += combat.monster.gold;
                 combat.monstersDefeated++;
+                combat.elements.monsterImg.setAttribute('src', '');
             }
         }
-        
-        setTimeout(combat.reset(), 1000);
+
+        setTimeout(combat.reset(), 1500);
 
     },
 
@@ -315,11 +305,10 @@ const combat = {
 
     flee: function() {
 
-        // CHARACTER TURNS AND RUNS, SCREEN FADES TO BLACK
         localStorage.setItem('score', JSON.stringify([prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
-        
-        setTimeout(function() {window.location.replace('leaderboard.html')}, 1000);
-    
+
+        setTimeout(function() {window.location.replace('leaderboard.html')}, 1500);
+
     },
 
     reset: function() {
