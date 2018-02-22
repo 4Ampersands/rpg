@@ -284,7 +284,7 @@ const combat = {
                 combat.elements.announcement.textContent = 'YOU DIED';
                 setTimeout(function() {
                     window.location.replace('bar.html')
-                }, 5000);
+                }, 1000);
                 continue;
             }
             
@@ -297,7 +297,7 @@ const combat = {
             }
         }
         
-        setTimeout(combat.reset(), 3000);
+        setTimeout(combat.reset(), 1000);
 
     },
 
