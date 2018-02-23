@@ -38,7 +38,7 @@ bruteSelect.addEventListener("click", function() {
         const select = function() {
         brute.inventory[0].equipped = true;
         brute.inventory[1].equipped = false;
-        itemDesc.textContent = "Increases your defensegit.";
+        itemDesc.textContent = "Increases your defense.";
         }
         select();
     });
