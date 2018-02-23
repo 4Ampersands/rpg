@@ -274,8 +274,9 @@ const combat = {
                 setTimeout(combat.reset(), 1500);
         
             };
-        } else if (combat.item.name === 'Smoke Bomb') {    
+        } else if (combat.item.name === 'Smoke Bomb') {
             this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
+            this.elements.itemHeader.classList.add('useable-item');
 
             combat.item.use = function() {
                     if (combat.item.used === false) {
@@ -307,6 +308,7 @@ const combat = {
             }
         } else if (combat.item.name === 'Healing Potion') {
             this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
+            this.elements.itemHeader.classList.add('useable-item');
 
             combat.item.use = function () {
                 if (combat.item.used === false) {
@@ -439,7 +441,7 @@ const combat = {
 
         combat.elements.characterImg.classList.add('running-away');
 
-        setTimeout(function() {window.location.replace('leaderboard.html')}, 1500);
+        setTimeout(function() {window.location.replace('leaderboard.html')}, 3000);
 
     },
 
