@@ -13,6 +13,7 @@ const combat = {
         characterImg: document.getElementById('character-img'),
         characterHP: document.getElementById('character-hp'),
         characterGold: document.getElementById('character-gold'),
+        charDamage: document.getElementById('character-damage'),
         goldIncrease: document.getElementById('gold-increase'),
 
         monsterImg: document.getElementById('monster-img'),
@@ -69,8 +70,6 @@ const combat = {
             combat.preFight = function() {
                 if (combat.character.hp <= 10) {
                     combat.character.hp += 1;
-                    const regen = new Audio("SoundFXShortened/healingregen.mp3");
-                    regen.play();
                     combat.elements.announcement.textContent = 'Healed 1hp';
                     setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
                 }
@@ -83,7 +82,15 @@ const combat = {
                     const damage = this.monster.attack - this.character.defense;
                     if (damage > 0) {
                         this.character.hp -= damage;
-                        this.elements.characterHP.textContent = 'HP: ' + this.character.hp;    
+                        this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
                     };
                 } else if (random >= 51 ) {
                     const dodgey = new Audio("SoundFXShortened/roguedodge.mp3");
@@ -95,8 +102,6 @@ const combat = {
         } else if (combat.character.name === 'Touchstone') {
             combat.preFight = function() {
                 combat.character.defense = randomNumber(1, 4);
-                const chaosmagic = new Audio("SoundFXShortened/chaosmagic.mp3");
-                chaosmagic.play();
     
                 combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
                 setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
@@ -112,9 +117,29 @@ const combat = {
                     if (combat.character.barrier > 0) {
                         combat.character.barrier -= damage;
                         combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp + '  Barrier: ' + combat.character.barrier;
+
+                        combat.elements.charDamage.classList.add('barrier-damage');
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('barrier-damage');
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
+            
                     } else if (combat.character.barrier <= 0) {
                         combat.character.hp -= damage;
                         combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;
+
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
+            
                     };
                 };
             };
@@ -215,6 +240,8 @@ const combat = {
                     combat.monsterAttack();
                     
                     if (combat.character.hp <= 0 ) {
+                        const splat = new Audio("SoundFXShortened/splat.mp3");
+                        splat.play();
                         this.elements.fight.removeEventListener('click', this.preFight);
                         this.elements.flee.removeEventListener('click', this.flee);
                         this.elements.itemHeader.removeEventListener('click', this.useItem);
@@ -288,7 +315,7 @@ const combat = {
                 if (combat.item.used === false) {
                     combat.item.used = true;
                     combat.elements.itemHeader.textContent = "";
-                    const healpot = new Audio("SoundFXShortened/ForceField.mp3");
+                    const healpot = new Audio("SoundFXShortened/chaosmagic.mp3");
                     healpot.play();
 
                     combat.character.hp = 10;
@@ -380,13 +407,19 @@ const combat = {
         if (damage > 0) {
             this.character.hp -= damage;
             this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+
+            combat.elements.charDamage.textContent = '-' + damage;
+            combat.elements.charDamage.classList.add('damage');
+
+            setTimeout(function(){
+                combat.elements.charDamage.textContent = ("");
+                combat.elements.charDamage.classList.remove('damage');
+            },2000);
         }
     },
 
     characterAttack: function() {
         this.monster.hp -= this.character.attack;
-        const attackSound = new Audio("SoundFXShortened/swordclash.mp3");
-        attackSound.play();
     },
 
     flee: function() {

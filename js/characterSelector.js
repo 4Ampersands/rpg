@@ -54,6 +54,8 @@ bruteSelect.addEventListener("click", function() {
         const select = function() {
         brute.inventory[0].equipped = false;
         brute.inventory[1].equipped = true;
+        const whoosh = new Audio("SoundFXShortened/SecondWeaponSwing.mp3");
+                whoosh.play();
         itemDesc.textContent = "You strike first! If the monster dies, you don't take damage.";
         }
         select();
@@ -101,6 +103,8 @@ rogueSelect.addEventListener("click", function() {
     itemSelect1.addEventListener("click", function () {
         const select = function() {
         itemDesc.textContent = "One-time use to automatically win a fight without taking any damage.";
+        const bomb = new Audio("SoundFXShortened/smokebomb.mp3");
+        bomb.play();
         rogue.inventory[0].equipped = true;
         rogue.inventory[1].equipped = false;
         }
@@ -110,6 +114,8 @@ rogueSelect.addEventListener("click", function() {
     itemSelect2.addEventListener("click", function () {
         const select = function() {
         itemDesc.textContent = "Receive double gold rewards from monsters.";
+        const cash = new Audio("SoundFXShortened/remy_cash.mp3");
+        cash.play();
         rogue.inventory[0].equipped = false;
         rogue.inventory[1].equipped = true;
         }
@@ -159,6 +165,8 @@ wizardSelect.addEventListener("click", function() {
         const select = function() {
         wizard.inventory[0].equipped = true;
         wizard.inventory[1].equipped = false;
+        const regen = new Audio("SoundFXShortened/healingregen.mp3");
+        regen.play();
         itemDesc.textContent = "One-time use to fully restore your HP.";
         }
         select();
