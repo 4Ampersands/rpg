@@ -26,14 +26,14 @@ function Item (name) {
 
 // MONSTERS
 function SmallMonster () {
-    this.portrait = 'images/smallmonster.png';
+    this.portrait = 'images/BAT.png';
     this.hp = 1;
     this.gold = randomNumber(1,4);
     this.attack = 2;
 };
 
 function MediumMonster () {
-    this.portrait = 'images/mediummonster.jpg'
+    this.portrait = 'images/FROG.png'
     this.hp = 2;
     this.gold = randomNumber(5,8);
     this.attack = randomNumber(3,4);
@@ -41,14 +41,14 @@ function MediumMonster () {
 
 function LargeMonster () {
     this.hp = 3;
-    this.portrait = 'images/largemonster.jpg'
+    this.portrait = 'images/BEHOLDER.png'
     this.gold = randomNumber(8,12);
     this.attack = randomNumber(4,5);
 };
 
 const brute = new Character (
     'Zanshin',
-    'images/brute.png',
+    'images/ZANSHIN2.png',
     2,
     2,
     [new Item ('Heavy Armor'), new Item ('Second Weapon')],
@@ -57,7 +57,7 @@ const brute = new Character (
 
 const rogue = new Character (
     'Rogue',
-    'images/rogue.png',
+    'images/ROGUE2.png',
     3,
     1,
     [new Item ('Smoke Bomb'), new Item ('Backpack')],
@@ -66,7 +66,7 @@ const rogue = new Character (
 
 const wizard = new Character (
     'Touchstone',
-    'images/wizard.png',
+    'images/TOUCHSTONE2.png',
     3,
     0,
     [new Item ('Healing Potion'), new Item ('Mind Control Scroll')],
