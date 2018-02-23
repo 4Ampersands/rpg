@@ -74,13 +74,33 @@ p#character-damage {
     color: blue;
 }
 
+#character-damage.healing-potion {
+    color: green;
+}
+
 @keyframes damage {
     0% {
-        top: -300;
+        top: -300px;
         opacity: 1;
     }
     100% {
         top: -250px;
+        opacity: 0;
+    }
+}
+
+.healing {
+    animation-name: healing;
+    animation-duration: 2s;
+}
+
+@keyframes healing {
+    0% {
+        top: -300px;
+        opacity: 1;
+    }
+    100% {
+        top: -350px;
         opacity: 0;
     }
 }
