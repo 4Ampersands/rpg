@@ -57,9 +57,6 @@ const combat = {
         if (this.characterSpecs[1] === 'Smoke Bomb') {
             this.item = new Item('Smoke Bomb');
         }
-        if (this.characterSpecs[1] === 'Mind Control Scroll') {
-            this.item = new Item('Mind Control Scroll');
-        }
         if (this.characterSpecs[1] === 'Healing Potion') {
             this.item = new Item('Healing Potion');
         }
