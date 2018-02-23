@@ -440,7 +440,7 @@ const combat = {
 
         combat.elements.characterImg.classList.add('running-away');
 
-        setTimeout(function() {window.location.replace('leaderboard.html')}, 3000);
+        setTimeout(function() {window.location.replace('leaderboard.html')}, 2500);
 
     },
 

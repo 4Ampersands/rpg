@@ -17,14 +17,13 @@ if (localStorage.getItem('leaderboard')) {
                 break;
             } 
         }
-     
-        if (spliced === false) {
-            leaderboardArray.push(playerInfo);
-        }
-    }   
+
+    }
+}   
+
+if (spliced === false) {
+    leaderboardArray.push(playerInfo);
 }
-
-
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
 
 function buildTable () {
