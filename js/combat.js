@@ -93,7 +93,6 @@ const combat = {
                     const dodgey = new Audio("SoundFXShortened/roguedodge.mp3");
                     dodgey.play();
                     combat.elements.announcement.textContent = 'Dodged! No damage!';
-                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
                 }
             };
         } else if (combat.character.name === 'Touchstone') {
@@ -235,13 +234,13 @@ const combat = {
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
         
                     combat.monsterAttack();
-                    
+
                     if (combat.character.hp <= 0 ) {
-                        const splat = new Audio("SoundFXShortened/splat.mp3");
-                        splat.play();
                         this.elements.fight.removeEventListener('click', this.preFight);
                         this.elements.flee.removeEventListener('click', this.flee);
                         this.elements.itemHeader.removeEventListener('click', this.useItem);
+                        const splat = new Audio("SoundFXShortened/splat.mp3");
+                        splat.play();
                         combat.elements.announcement.textContent = 'YOU DIED';
                         combat.elements.characterImg.classList.add('dying');
                         setTimeout(function() {window.location.replace('bar.html')}, 2000);
@@ -270,8 +269,8 @@ const combat = {
         
                     }
                 }
-                
-                setTimeout(combat.reset(), 1500);
+
+                setTimeout(function() {combat.reset();}, 2000);
         
             };
         } else if (combat.item.name === 'Smoke Bomb') {
