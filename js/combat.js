@@ -324,9 +324,8 @@ const combat = {
     
                     setTimeout(function(){
                         combat.elements.charDamage.textContent = ("");
-                        combat.elements.goldIncrease.classList.remove('healing');
-                        combat.elements.goldIncrease.classList.remove('healing-potion');
                         combat.elements.charDamage.classList.remove('healing');
+                        combat.elements.charDamage.classList.remove('healing-potion');
                     },2000);
     
                     
