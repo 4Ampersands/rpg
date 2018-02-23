@@ -13,6 +13,7 @@ const combat = {
         characterImg: document.getElementById('character-img'),
         characterHP: document.getElementById('character-hp'),
         characterGold: document.getElementById('character-gold'),
+        goldIncrease: document.getElementById('gold-increase'),
 
         monsterImg: document.getElementById('monster-img'),
         
@@ -157,17 +158,35 @@ const combat = {
                     if (this.monster.hp <=0) {
                         this.character.gold += this.monster.gold;
                         combat.monstersDefeated++;
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
                         continue;
                     }
                     
                     this.monsterAttack();
                     
                     if (this.character.hp <= 0 ) {
-                        combat.elements.announcement.textContent = "YOU HAVE DIED";
                         const splat = new Audio("SoundFXShortened/splat.mp3");
                         splat.play();
-    
-                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
+                        this.elements.fight.removeEventListener('click', this.preFight);
+                        this.elements.flee.removeEventListener('click', this.flee);
+                        this.elements.itemHeader.removeEventListener('click', this.useItem);
+                        combat.elements.announcement.textContent = 'YOU DIED';
+                        combat.elements.characterImg.classList.add('dying');
+                        setTimeout(function() {window.location.replace('bar.html')}, 2000);
                         continue;
                     };                
                 };
@@ -196,14 +215,35 @@ const combat = {
                     combat.monsterAttack();
                     
                     if (combat.character.hp <= 0 ) {
-                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
+                        this.elements.fight.removeEventListener('click', this.preFight);
+                        this.elements.flee.removeEventListener('click', this.flee);
+                        this.elements.itemHeader.removeEventListener('click', this.useItem);
+                        combat.elements.announcement.textContent = 'YOU DIED';
+                        combat.elements.characterImg.classList.add('dying');
+                        setTimeout(function() {window.location.replace('bar.html')}, 2000);
                         continue;
-                    }
+                            }
                     
                     combat.characterAttack();
         
                     if (combat.monster.hp <=0) {
                         combat.character.gold += (combat.monster.gold * 2);
+                        combat.monstersDefeated++;
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
                     }
                 }
                 
@@ -223,9 +263,23 @@ const combat = {
                         combat.elements.announcement.textContent = 'Smoke Bomb used! Automatic win!';
                         combat.monstersDefeated++;
                         combat.elements.itemHeader.textContent = "";
-                        
-                        setTimeout(combat.reset(), 1500);
-                    }
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
+                    setTimeout(function(){combat.reset()}, 2000);
+                }
             }
         } else if (combat.item.name === 'Healing Potion') {
             this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
@@ -290,7 +344,8 @@ const combat = {
                 const splat = new Audio("SoundFXShortened/splat.mp3");
                 splat.play();
                 combat.elements.announcement.textContent = 'YOU DIED';
-                setTimeout(function() {window.location.replace('bar.html')}, 1500);
+                combat.elements.characterImg.classList.add('dying');
+                setTimeout(function() {window.location.replace('bar.html')}, 2000);
                 continue;
             }
 
@@ -299,11 +354,24 @@ const combat = {
             if (combat.monster.hp <=0) {
                 combat.character.gold += combat.monster.gold;
                 combat.monstersDefeated++;
-                combat.elements.monsterImg.setAttribute('src', '');
+
+                combat.elements.monsterImg.classList.add('dying');
+                combat.elements.fight.removeEventListener('click', combat.preFight);             
+                combat.elements.fight.classList.toggle('pressed');
+                combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                combat.elements.goldIncrease.classList.toggle('bling');
+
+                setTimeout(function(){
+                    combat.elements.monsterImg.classList.remove('dying');
+                    combat.elements.fight.addEventListener('click', combat.preFight);
+                    combat.elements.fight.classList.toggle('pressed');
+                    combat.elements.goldIncrease.textContent = ("");
+                    combat.elements.goldIncrease.classList.toggle('bling');
+                },2000);
             }
         }
 
-        setTimeout(combat.reset(), 1500);
+        setTimeout(function() {combat.reset();}, 2000);
 
     },
 
@@ -327,6 +395,8 @@ const combat = {
         runawayMP.play();
 
         localStorage.setItem('score', JSON.stringify([prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
+
+        combat.elements.characterImg.classList.add('running-away');
 
         setTimeout(function() {window.location.replace('leaderboard.html')}, 1500);
 
