@@ -45,6 +45,25 @@ img#character-img {
     width: 200px;
 }
 
+img.running-away {
+    animation-name: running;
+    animation-duration: 2s;
+}
+
+@keyframes running {
+    0% {
+        left: 200px;
+    }
+    15% {
+        transform: rotateY(180deg);
+        left: 200px;
+    }
+    100% {
+        transform: rotateY(180deg);
+        left: -300px;
+    }
+}
+
 p#character-hp {
     left: 230px;
     bottom: 80px;
@@ -68,22 +87,70 @@ img#monster-img {
     width: 200px;
 }
 
+img.dying {
+    animation-name: dying;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes dying {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
 div#gold {
     font-size: 2em;
 }
 
-div#gold p {
+#gold {
     background: linear-gradient(blue, navy);
     border: 5px solid white;
     border-radius: 10px;
-    color: yellow;
-    height: fit-content;
+    color: gold;
+    height: 2.5em;;
     margin: 0 auto;
-    padding: 3px 5px;
     position: relative;
     z-index: 1;
     text-align: center;
     width: 6em;;
+}
+
+#gold p {
+    margin: 3px;
+    padding: 2px;
+}
+
+#gold-increase {
+    color: gold;
+    height: 0;
+    margin: 0 auto;
+    padding: 3px 5px;
+    top: -55px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    width: 6em;
+}
+
+#gold-increase.bling {
+    animation-name: bling;
+    animation-duration: 2s;
+}
+
+@keyframes bling {
+    0% {
+        opacity: 1;
+        top: 0;
+    }
+    100% {
+        opacity: 0;
+        top: -100px;
+    }
 }
 
 #dungeon-choice {
@@ -92,12 +159,15 @@ div#gold p {
     border: 5px solid white;
     border-radius: 10px;
     margin: 0 auto;
-    height: 180px;
     width: 99%;
 }
 
 #choice-container {
     margin: auto;
+}
+
+.pressed {
+    color: grey;
 }
 
 #fight-container, #flee-container, #item-container {
