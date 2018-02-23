@@ -319,6 +319,17 @@ const combat = {
                     healpot.play();
 
                     combat.character.hp = 10;
+
+                    combat.elements.charDamage.classList.add('healing-potion');
+                    combat.elements.charDamage.classList.add('healing');
+                    combat.elements.charDamage.textContent = "+10";
+    
+                    setTimeout(function(){
+                        combat.elements.charDamage.textContent = ("");
+                        combat.elements.goldIncrease.classList.remove('healing');
+                        combat.elements.goldIncrease.classList.remove('healing-potion');
+                    },2000);
+    
                     
                     combat.elements.announcement.textContent = 'Healing Potion used! Health fully restored!';
 
