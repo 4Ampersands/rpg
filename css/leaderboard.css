@@ -5,13 +5,12 @@ html {
 }
 
 body {
-    /* background-image: url("../images/scroll.jpg"); */
     background-size: 45%;
     background-repeat: no-repeat;
     background-position: center top;
     background-position: fixed;    
-    font-family: 'Nothing You Could Do', cursive;
-    color: blue;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -21,14 +20,18 @@ body {
 
 #leaderboardTable {
     font-size: 150%;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
     table-layout: fixed;
     }
 
 table {
+    background: linear-gradient(blue, navy);
+    padding: 20px;
     width: 450px;
     margin-top: 10px;
+    border-radius: 10px;
+    border: white solid 5px;
 }
 
 td {
@@ -38,35 +41,62 @@ td {
 }
 
 #leaderboardTitle {
-    font-size: 175%;
+    font-size: 250%;
+    font-family: 'Nothing You Could Do', cursive;
+    padding-bottom: 10px;
     /* margin-top:  */
     /* width: 50%; */
-    position: top, fixed;
-    display: flex;
-    justify-content: center;
+    /* position: top, fixed; */
+    /* display: flex;
+    justify-content: center; */
 }
 
-button {
-    position: fixed;
-    top: 94%;
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center
-}
-
-#tableRow {
+#tableRow th {
     font-size: 120%;
     text-transform: uppercase;
+    margin-top: 10px;
+    border-bottom: white solid 1px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 #leaderboard {
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
 tableFoot {
     position: fixed;
+}
+
+.tableRow td {
+    padding: 10px; 
+}
+
+#high-score {
+    color: gold
+}
+
+#play-again {
+    background: linear-gradient(blue, navy);
+    padding: 12px;
+    border-radius: 10px;
+    font-family: 'Nothing You Could Do', cursive;
+    cursor: pointer;
+}
+
+#play-again:hover {
+    box-shadow:
+        1px 1px white,
+        2px 2px white,
+        3px 3px white;
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px)
+}
+
+#play-again a {
+    text-decoration: none;
+    color: white
 }
