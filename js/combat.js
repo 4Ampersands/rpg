@@ -13,6 +13,7 @@ const combat = {
         characterImg: document.getElementById('character-img'),
         characterHP: document.getElementById('character-hp'),
         characterGold: document.getElementById('character-gold'),
+        charDamage: document.getElementById('character-damage'),
         goldIncrease: document.getElementById('gold-increase'),
 
         monsterImg: document.getElementById('monster-img'),
@@ -83,7 +84,15 @@ const combat = {
                     const damage = this.monster.attack - this.character.defense;
                     if (damage > 0) {
                         this.character.hp -= damage;
-                        this.elements.characterHP.textContent = 'HP: ' + this.character.hp;    
+                        this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
                     };
                 } else if (random >= 51 ) {
                     const dodgey = new Audio("SoundFXShortened/roguedodge.mp3");
@@ -112,9 +121,29 @@ const combat = {
                     if (combat.character.barrier > 0) {
                         combat.character.barrier -= damage;
                         combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp + '  Barrier: ' + combat.character.barrier;
+
+                        combat.elements.charDamage.classList.add('barrier-damage');
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('barrier-damage');
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
+            
                     } else if (combat.character.barrier <= 0) {
                         combat.character.hp -= damage;
                         combat.elements.characterHP.textContent = 'HP: ' + combat.character.hp;
+
+                        combat.elements.charDamage.textContent = '-' + damage;
+                        combat.elements.charDamage.classList.add('damage');
+            
+                        setTimeout(function(){
+                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.classList.remove('damage');
+                        },2000);
+            
                     };
                 };
             };
@@ -380,6 +409,14 @@ const combat = {
         if (damage > 0) {
             this.character.hp -= damage;
             this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
+
+            combat.elements.charDamage.textContent = '-' + damage;
+            combat.elements.charDamage.classList.add('damage');
+
+            setTimeout(function(){
+                combat.elements.charDamage.textContent = ("");
+                combat.elements.charDamage.classList.remove('damage');
+            },2000);
         }
     },
 

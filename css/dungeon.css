@@ -45,9 +45,49 @@ img#character-img {
     width: 200px;
 }
 
-img.running-away {
-    animation-name: running;
+p#character-hp {
+    left: 230px;
+    bottom: 80px;
+    max-width: 7em;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 1.5em;
+    position: relative;
+    text-align: center;
+}
+
+p#character-damage {
+    position: relative;
+    top: -300px;
+    color: red;
+    text-align: center;
+    bottom: 80px;
+    font-size: 1.5em;
+}
+
+.damage {
+    animation-name: damage;
     animation-duration: 2s;
+}
+
+#character-damage.barrier-damage {
+    color: blue;
+}
+
+@keyframes damage {
+    0% {
+        top: -300;
+        opacity: 1;
+    }
+    100% {
+        top: -250px;
+        opacity: 0;
+    }
+}
+
+img.running-away {
+animation-name: running;
+animation-duration: 2s;
 }
 
 @keyframes running {
@@ -62,17 +102,6 @@ img.running-away {
         transform: rotateY(180deg);
         left: -300px;
     }
-}
-
-p#character-hp {
-    left: 230px;
-    bottom: 80px;
-    max-width: 7em;
-    padding: 3px;
-    font-weight: bold;
-    font-size: 1.5em;
-    position: relative;
-    text-align: center;
 }
 
 div#monster-div {
@@ -170,9 +199,15 @@ div#gold {
     color: grey;
 }
 
-#fight-container, #flee-container, #item-container {
-    width: 29%;
-    margin: 0 .75em;
+#fight-container, #flee-container {
+    width: 24%;
+    margin: 1em 0;
+    float: left;
+    text-align: center;
+}
+
+#item-container {
+    width: 49%;
     float: left;
     text-align: center;
 }
