@@ -68,6 +68,8 @@ const combat = {
             combat.preFight = function() {
                 if (combat.character.hp <= 10) {
                     combat.character.hp += 1;
+                    const regen = new Audio("SoundFXShortened/healingregen.mp3");
+                    regen.play();
                     combat.elements.announcement.textContent = 'Healed 1hp';
                     setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
                 }
@@ -83,6 +85,8 @@ const combat = {
                         this.elements.characterHP.textContent = 'HP: ' + this.character.hp;    
                     };
                 } else if (random >= 51 ) {
+                    const dodgey = new Audio("SoundFXShortened/roguedodge.mp3");
+                    dodgey.play();
                     combat.elements.announcement.textContent = 'Dodged! No damage!';
                     setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
                 }
@@ -90,6 +94,8 @@ const combat = {
         } else if (combat.character.name === 'Touchstone') {
             combat.preFight = function() {
                 combat.character.defense = randomNumber(1, 4);
+                const chaosmagic = new Audio("SoundFXShortened/chaosmagic.mp3");
+                chaosmagic.play();
     
                 combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
                 setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
@@ -142,6 +148,8 @@ const combat = {
 
             combat.fightFirst = function() {
                 this.elements.announcement.textContent = "First strike! No damage taken!";
+                const firstStrike = new Audio("SoundFXShortened/SecondWeaponSwing.mp3");
+                firstStrike.play();
 
                 while (combat.character.hp > 0 && combat.monster.hp > 0) {
                     
@@ -156,6 +164,8 @@ const combat = {
                     
                     if (this.character.hp <= 0 ) {
                         combat.elements.announcement.textContent = "YOU HAVE DIED";
+                        const splat = new Audio("SoundFXShortened/splat.mp3");
+                        splat.play();
     
                         setTimeout(function() {window.location.replace('bar.html')}, 1500);
                         continue;
@@ -208,6 +218,8 @@ const combat = {
                         combat.item.used = true;
 
                         combat.character.gold += (combat.monster.gold);
+                        const smoke = new Audio("SoundFXShortened/SmokeBomb.mp3");
+                        smoke.play();
                         combat.elements.announcement.textContent = 'Smoke Bomb used! Automatic win!';
                         combat.monstersDefeated++;
                         combat.elements.itemHeader.textContent = "";
@@ -222,7 +234,9 @@ const combat = {
                 if (combat.item.used === false) {
                     combat.item.used = true;
                     combat.elements.itemHeader.textContent = "";
-                    
+                    const healpot = new Audio("SoundFXShortened/ForceField.mp3");
+                    healpot.play();
+
                     combat.character.hp = 10;
                     
                     combat.elements.announcement.textContent = 'Healing Potion used! Health fully restored!';
@@ -273,6 +287,8 @@ const combat = {
                 this.elements.fight.removeEventListener('click', this.preFight);
                 this.elements.flee.removeEventListener('click', this.flee);
                 this.elements.itemHeader.removeEventListener('click', this.useItem);
+                const splat = new Audio("SoundFXShortened/splat.mp3");
+                splat.play();
                 combat.elements.announcement.textContent = 'YOU DIED';
                 setTimeout(function() {window.location.replace('bar.html')}, 1500);
                 continue;
@@ -301,9 +317,14 @@ const combat = {
 
     characterAttack: function() {
         this.monster.hp -= this.character.attack;
+        const attackSound = new Audio("SoundFXShortened/swordclash.mp3");
+        attackSound.play();
     },
 
     flee: function() {
+
+        const runawayMP = new Audio("SoundFXShortened/MontyPythonrunaway.mp3");
+        runawayMP.play();
 
         localStorage.setItem('score', JSON.stringify([prompt('What is your name?'), combat.character.name, combat.item.name, combat.character.gold]));
 
