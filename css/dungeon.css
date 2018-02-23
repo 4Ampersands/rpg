@@ -40,14 +40,14 @@ div#character-div {
 
 img#character-img {
     left: 200px;
-    bottom: 70px;
+    bottom: 160px;
     position: relative;
-    width: 200px;
+    height: 400px;
 }
 
 p#character-hp {
     left: 230px;
-    bottom: 80px;
+    bottom: 220px;
     max-width: 7em;
     padding: 3px;
     font-weight: bold;
@@ -107,7 +107,7 @@ p#character-damage {
 
 img.running-away {
 animation-name: running;
-animation-duration: 2s;
+animation-duration: 3s;
 }
 
 @keyframes running {
@@ -118,9 +118,13 @@ animation-duration: 2s;
         transform: rotateY(180deg);
         left: 200px;
     }
+    75% {
+        transform: rotateY(180deg);
+        left: -600px;
+    }
     100% {
         transform: rotateY(180deg);
-        left: -300px;
+        left: -600px;
     }
 }
 
@@ -133,7 +137,8 @@ div#monster-div {
 img#monster-img {
     left: 200px;
     position: relative;
-    width: 200px;
+    bottom: 130px;
+    height: 400px;
 }
 
 img.dying {
@@ -224,12 +229,17 @@ div#gold {
     margin: 1em 0;
     float: left;
     text-align: center;
+    cursor: pointer;
 }
 
 #item-container {
     width: 49%;
     float: left;
     text-align: center;
+}
+
+.useable-item {
+    cursor: pointer;
 }
 
 #item-container p {
