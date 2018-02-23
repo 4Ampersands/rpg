@@ -38,7 +38,7 @@ bruteSelect.addEventListener("click", function() {
         const select = function() {
         brute.inventory[0].equipped = true;
         brute.inventory[1].equipped = false;
-        itemDesc.textContent = "Increases your defense by 1.";
+        itemDesc.textContent = "Increases your defense.";
         }
         select();
     });
@@ -49,7 +49,7 @@ bruteSelect.addEventListener("click", function() {
         brute.inventory[1].equipped = true;
         const whoosh = new Audio("SoundFXShortened/SecondWeaponSwing.mp3");
                 whoosh.play();
-        itemDesc.textContent = "You strike first! If the monster dies, you don't take damage.";
+        itemDesc.textContent = "Chance to strike first. If the monster dies, you don't take damage.";
         }
         select();
     });
@@ -120,7 +120,7 @@ wizardSelect.addEventListener("click", function() {
     const p = document.createElement("p");
     const p2 = document.createElement("p2");
     p.textContent = wizard.bio;
-    p2.textContent = 'Special Ability: Touchstone draws upon the power of arcane chaos, increasing his attack and defense by random amounts for every encounter. He also creates a force-field that adds an extra 20hp';
+    p2.textContent = 'Special Ability: Touchstone draws upon the power of arcane chaos, increasing his defense by random amounts for every encounter. He also creates a force-field that adds an extra 20hp';
 
     const stats = document.getElementById("stats-items");
     const itemDesc = document.getElementById("item-description");
