@@ -103,7 +103,7 @@ rogueSelect.addEventListener("click", function() {
     itemSelect1.addEventListener("click", function () {
         const select = function() {
         itemDesc.textContent = "One-time use to automatically win a fight without taking any damage.";
-        const bomb = new Audio("SoundFXShortened/smokebomb.mp3");
+        const bomb = new Audio("SoundFXShortened/SmokeBomb.mp3");
         bomb.play();
         rogue.inventory[0].equipped = true;
         rogue.inventory[1].equipped = false;
@@ -114,7 +114,7 @@ rogueSelect.addEventListener("click", function() {
     itemSelect2.addEventListener("click", function () {
         const select = function() {
         itemDesc.textContent = "Receive double gold rewards from monsters.";
-        const cash = new Audio("SoundFXShortened/remy_cash.mp3");
+        const cash = new Audio("SoundFXShortened/remy_cash.wav");
         cash.play();
         rogue.inventory[0].equipped = false;
         rogue.inventory[1].equipped = true;

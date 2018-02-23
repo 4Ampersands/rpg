@@ -1,7 +1,6 @@
 'use strict'
 
 let leaderboardArray = [];
-let arrayLength = leaderboardArray.length;
 let spliced = false; 
 const playerInfo = JSON.parse(localStorage.getItem('score'));
 
@@ -9,6 +8,7 @@ if (localStorage.getItem('leaderboard')) {
     leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
 
     if (localStorage.getItem('score')) {
+        let arrayLength = 1;
         arrayLength = leaderboardArray.length;
         for (let i = 0; i < arrayLength; i++) {
             if (playerInfo[3] > leaderboardArray[i][3]) {
