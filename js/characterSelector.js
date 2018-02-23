@@ -4,13 +4,6 @@ const hide = document.getElementsByClassName("hidden");
 
 const bruteSelect = document.getElementById("brute");
 bruteSelect.addEventListener("click", function() {
-    
-    // if (hide[0].classList.contains("hidden")) {
-    //     for (let i = 0; i <= hide.length; i++) {
-    //         hide[i].classList.remove("hidden");
-    //     }
-    // }
-    
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -65,11 +58,6 @@ bruteSelect.addEventListener("click", function() {
 
 const rogueSelect = document.getElementById("rogue");
 rogueSelect.addEventListener("click", function() {
-    // if (hide[0].classList.contains("hidden")) {
-    //     for (let i = 0; i <= hide.length; i++) {
-    //         hide[i].classList.remove("hidden");
-    //     }
-    // }
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -125,11 +113,6 @@ rogueSelect.addEventListener("click", function() {
 
 const wizardSelect = document.getElementById("wizard");
 wizardSelect.addEventListener("click", function() {
-    // if (hide[0].classList.contains("hidden")) {
-    //     for (let i = 0; i <= hide.length; i++) {
-    //         hide[i].classList.remove("hidden");
-    //     }
-    // }
     clearCharSelect();
     const bio = document.getElementById("bio");
     const h2 = document.createElement("h2");
@@ -146,11 +129,8 @@ wizardSelect.addEventListener("click", function() {
     const h4 = document.createElement("h2");
     h4.textContent = 'Defense Value: None';
     const itemSelect1 = document.createElement("button");
-    // const itemSelect2 = document.createElement("button");
     itemSelect1.className = "item-select";
-    // itemSelect2.className = "item-select";
     itemSelect1.textContent = wizard.inventory[0].name;
-    // itemSelect2.textContent = wizard.inventory[1].name;
 
 
     bio.appendChild(h2);
@@ -159,7 +139,6 @@ wizardSelect.addEventListener("click", function() {
     stats.appendChild(h3);
     stats.appendChild(h4);
     stats.appendChild(itemSelect1);
-    // stats.appendChild(itemSelect2);
 
     itemSelect1.addEventListener("click", function () {
         const select = function() {
@@ -201,7 +180,5 @@ function storage() {
         localStorage.setItem("characterSpecs", JSON.stringify([rogue.name, rogue.inventory[1].name]));
     } else if (wizard.inventory[0].equipped === true) {
         localStorage.setItem("characterSpecs", JSON.stringify([wizard.name, wizard.inventory[0].name]));
-    // } else if (wizard.inventory[1].equipped === true) {
-    //     localStorage.setItem("characterSpecs", JSON.stringify([wizard.name, wizard.inventory[1].name]));
     } 
 }
