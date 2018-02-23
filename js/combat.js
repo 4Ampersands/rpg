@@ -150,15 +150,33 @@ const combat = {
                     if (this.monster.hp <=0) {
                         this.character.gold += this.monster.gold;
                         combat.monstersDefeated++;
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
                         continue;
                     }
                     
                     this.monsterAttack();
                     
                     if (this.character.hp <= 0 ) {
-                        combat.elements.announcement.textContent = "YOU HAVE DIED";
-    
-                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
+                        this.elements.fight.removeEventListener('click', this.preFight);
+                        this.elements.flee.removeEventListener('click', this.flee);
+                        this.elements.itemHeader.removeEventListener('click', this.useItem);
+                        combat.elements.announcement.textContent = 'YOU DIED';
+                        combat.elements.characterImg.classList.add('dying');
+                        setTimeout(function() {window.location.replace('bar.html')}, 2000);
                         continue;
                     };                
                 };
@@ -187,14 +205,35 @@ const combat = {
                     combat.monsterAttack();
                     
                     if (combat.character.hp <= 0 ) {
-                        setTimeout(function() {window.location.replace('bar.html')}, 1500);
+                        this.elements.fight.removeEventListener('click', this.preFight);
+                        this.elements.flee.removeEventListener('click', this.flee);
+                        this.elements.itemHeader.removeEventListener('click', this.useItem);
+                        combat.elements.announcement.textContent = 'YOU DIED';
+                        combat.elements.characterImg.classList.add('dying');
+                        setTimeout(function() {window.location.replace('bar.html')}, 2000);
                         continue;
-                    }
+                            }
                     
                     combat.characterAttack();
         
                     if (combat.monster.hp <=0) {
                         combat.character.gold += (combat.monster.gold * 2);
+                        combat.monstersDefeated++;
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
                     }
                 }
                 
@@ -212,9 +251,23 @@ const combat = {
                         combat.elements.announcement.textContent = 'Smoke Bomb used! Automatic win!';
                         combat.monstersDefeated++;
                         combat.elements.itemHeader.textContent = "";
-                        
-                        setTimeout(combat.reset(), 1500);
-                    }
+
+                        combat.elements.monsterImg.classList.add('dying');
+                        combat.elements.fight.removeEventListener('click', combat.preFight);             
+                        combat.elements.fight.classList.toggle('pressed');
+                        combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                        combat.elements.goldIncrease.classList.toggle('bling');
+        
+                        setTimeout(function(){
+                            combat.elements.monsterImg.classList.remove('dying');
+                            combat.elements.fight.addEventListener('click', combat.preFight);
+                            combat.elements.fight.classList.toggle('pressed');
+                            combat.elements.goldIncrease.textContent = ("");
+                            combat.elements.goldIncrease.classList.toggle('bling');
+                        },2000);
+        
+                    setTimeout(function(){combat.reset()}, 2000);
+                }
             }
         } else if (combat.item.name === 'Healing Potion') {
             this.elements.itemHeader.textContent = this.item.name + '. Click to use.';
@@ -298,7 +351,7 @@ const combat = {
                     combat.elements.fight.classList.toggle('pressed');
                     combat.elements.goldIncrease.textContent = ("");
                     combat.elements.goldIncrease.classList.toggle('bling');
-                    },2000);
+                },2000);
             }
         }
 
