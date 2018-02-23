@@ -326,6 +326,7 @@ const combat = {
                         combat.elements.charDamage.textContent = ("");
                         combat.elements.goldIncrease.classList.remove('healing');
                         combat.elements.goldIncrease.classList.remove('healing-potion');
+                        combat.elements.charDamage.classList.remove('healing');
                     },2000);
     
                     
