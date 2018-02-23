@@ -39,7 +39,7 @@ td {
 
 #leaderboardTitle {
     font-size: 175%;
-    margin-top: -40px;
+    /* margin-top:  */
     /* width: 50%; */
     position: top, fixed;
     display: flex;

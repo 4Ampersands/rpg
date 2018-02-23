@@ -69,8 +69,6 @@ const combat = {
             combat.preFight = function() {
                 if (combat.character.hp <= 10) {
                     combat.character.hp += 1;
-                    const regen = new Audio("SoundFXShortened/healingregen.mp3");
-                    regen.play();
                     combat.elements.announcement.textContent = 'Healed 1hp';
                     setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
                 }
@@ -95,8 +93,6 @@ const combat = {
         } else if (combat.character.name === 'Touchstone') {
             combat.preFight = function() {
                 combat.character.defense = randomNumber(1, 4);
-                const chaosmagic = new Audio("SoundFXShortened/chaosmagic.mp3");
-                chaosmagic.play();
     
                 combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
                 setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
@@ -215,6 +211,8 @@ const combat = {
                     combat.monsterAttack();
                     
                     if (combat.character.hp <= 0 ) {
+                        const splat = new Audio("SoundFXShortened/splat.mp3");
+                        splat.play();
                         this.elements.fight.removeEventListener('click', this.preFight);
                         this.elements.flee.removeEventListener('click', this.flee);
                         this.elements.itemHeader.removeEventListener('click', this.useItem);
@@ -288,7 +286,7 @@ const combat = {
                 if (combat.item.used === false) {
                     combat.item.used = true;
                     combat.elements.itemHeader.textContent = "";
-                    const healpot = new Audio("SoundFXShortened/ForceField.mp3");
+                    const healpot = new Audio("SoundFXShortened/chaosmagic.mp3");
                     healpot.play();
 
                     combat.character.hp = 10;
@@ -385,8 +383,6 @@ const combat = {
 
     characterAttack: function() {
         this.monster.hp -= this.character.attack;
-        const attackSound = new Audio("SoundFXShortened/swordclash.mp3");
-        attackSound.play();
     },
 
     flee: function() {
