@@ -21,7 +21,7 @@ if (localStorage.getItem('leaderboard')) {
     }
 }   
 
-if (spliced === false) {
+if ((spliced === false) && (playerInfo != null)) {
     leaderboardArray.push(playerInfo);
 }
 localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
