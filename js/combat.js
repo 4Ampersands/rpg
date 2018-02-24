@@ -219,6 +219,12 @@ const combat = {
                 combat.elements.announcement.textContent = "";
                 const random = randomNumber (1,100);
 
+                if (combat.character.hp <= 10) {
+                    combat.character.hp += 1;
+                    combat.elements.announcement.textContent = 'Healed 1hp';
+                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
+                }
+                
                 if (random < 50) {
                     combat.fight();
                 } else if (random >= 50) {
