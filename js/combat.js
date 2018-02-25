@@ -44,7 +44,15 @@ const combat = {
         } else if (this.characterSpecs[0] === 'Touchstone') {
             combat.character = wizard;
         };
+        
+        /*
+            This would be a good spot for a switch case instead of a bunch of ifs
+            Or... if the string you check against will always be the same as the argument
+            you need to pass, it doesn't matter what the value is, you could always do
 
+            this.item = new Item(this.characterSpecs[1]);
+
+        */
         if (this.characterSpecs[1] === 'Heavy Armor') {
             this.item = new Item('Heavy Armor');
         }
@@ -64,11 +72,29 @@ const combat = {
 
     loadAbility: function () {
         if (combat.character.name === 'Zanshin') {
+            /*
+                Rewriting the functions works well and is super clever - 
+                I would suggest moving the functions elsewhere
+                rather than writing them out here though. 
+
+                Something like:
+
+                (On your combat object)
+                preFightMethods: 
+                    wizard: function () {},
+                    brute: function () {}
+                }
+
+                Then here, instead of having all the logic exist in loadAbility,
+                it would be more skim-able:
+
+                combat.preFight = combat.preFightMethods.brute;
+            */
             combat.preFight = function() {
                 if (combat.character.hp <= 10) {
                     combat.character.hp += 1;
                     combat.elements.announcement.textContent = 'Healed 1hp';
-                    setTimeout(function() {combat.elements.announcement.textContent = "";}, 2000);
+                    setTimeout(function() {combat.elements.announcement.textContent = '';}, 2000);
                 }
                 combat.fight();
             };       
@@ -85,11 +111,12 @@ const combat = {
                         combat.elements.charDamage.classList.add('damage');
             
                         setTimeout(function(){
-                            combat.elements.charDamage.textContent = ("");
+                            // You don't need the extra parens 
+                            combat.elements.charDamage.textContent = '';
                             combat.elements.charDamage.classList.remove('damage');
                         },2000);
                     };
-                } else if (random >= 51 ) {
+                } else if (random >= 51) {
                     const dodgey = new Audio("SoundFXShortened/roguedodge.mp3");
                     dodgey.play();
                     combat.elements.announcement.textContent = 'Dodged! No damage!';
@@ -100,7 +127,7 @@ const combat = {
                 combat.character.defense = randomNumber(1, 4);
     
                 combat.elements.announcement.textContent = 'Chaos Magic! Defense: ' + combat.character.defense;
-                setTimeout(function() {combat.elements.announcement.textContent = "";}, 1500);
+                setTimeout(function() {combat.elements.announcement.textContent = '';}, 1500);
     
                 combat.fight();
             }
@@ -119,7 +146,7 @@ const combat = {
                         combat.elements.charDamage.classList.add('damage');
             
                         setTimeout(function(){
-                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.textContent = '';
                             combat.elements.charDamage.classList.remove('barrier-damage');
                             combat.elements.charDamage.classList.remove('damage');
                         },2000);
@@ -132,7 +159,7 @@ const combat = {
                         combat.elements.charDamage.classList.add('damage');
             
                         setTimeout(function(){
-                            combat.elements.charDamage.textContent = ("");
+                            combat.elements.charDamage.textContent = '';
                             combat.elements.charDamage.classList.remove('damage');
                         },2000);
             
@@ -147,10 +174,9 @@ const combat = {
                     this.elements.characterHP.textContent = 'HP: ' + this.character.hp + '  Barrier: ' + this.character.barrier;
                 } else if (combat.character.barrier <= 0) {
                     this.elements.characterHP.textContent = 'HP: ' + this.character.hp;
-                    
                 }
                 this.elements.characterGold.textContent = 'GOLD: ' + this.character.gold;
-                
+
                 this.elements.itemHeader.textContent = this.item.name;
 
                 this.elements.monsterImg.setAttribute('src', this.monster.portrait);
@@ -159,6 +185,11 @@ const combat = {
     },
 
     equipItem: function() {
+        /*
+            Same idea here - generally, you want to be able to understand
+            at a glance what a function is doing. Splitting a large one
+            into smaller bite sized ones with apt names helps with that!
+        */
         if (combat.item.name === 'Heavy Armor') {
     
             combat.character.defense = 3;
@@ -351,7 +382,13 @@ const combat = {
         this.elements.monsterImg.setAttribute('src', this.monster.portrait);
     },
 
-    createMonster: function () {    
+    createMonster: function () {
+        /*
+            This could be refactored using a ternary operator!
+            Also could probably be renamed better, maybe level?
+
+            const level = combat.monstersDefeated < 5 ? randomNumber(1,2) : randomNumber(1,3);
+        */
         let random;
         if (combat.monstersDefeated < 5) {
             random = randomNumber(1, 2);
@@ -370,7 +407,7 @@ const combat = {
 
     // preFight is used by certain character abilities. It is otherwise filler.
     preFight: function () {
-        combat.elements.announcement.textContent = "";
+        combat.elements.announcement.textContent = '';
         combat.fight();
     },
 
@@ -400,14 +437,14 @@ const combat = {
                 combat.elements.monsterImg.classList.add('dying');
                 combat.elements.fight.removeEventListener('click', combat.preFight);             
                 combat.elements.fight.classList.toggle('pressed');
-                combat.elements.goldIncrease.textContent = "+" + combat.monster.gold;
+                combat.elements.goldIncrease.textContent = '+' + combat.monster.gold;
                 combat.elements.goldIncrease.classList.toggle('bling');
 
                 setTimeout(function(){
                     combat.elements.monsterImg.classList.remove('dying');
                     combat.elements.fight.addEventListener('click', combat.preFight);
                     combat.elements.fight.classList.toggle('pressed');
-                    combat.elements.goldIncrease.textContent = ("");
+                    combat.elements.goldIncrease.textContent = '';
                     combat.elements.goldIncrease.classList.toggle('bling');
                 },2000);
             }
@@ -427,7 +464,7 @@ const combat = {
             combat.elements.charDamage.classList.add('damage');
 
             setTimeout(function(){
-                combat.elements.charDamage.textContent = ("");
+                combat.elements.charDamage.textContent = '';
                 combat.elements.charDamage.classList.remove('damage');
             },2000);
         }
