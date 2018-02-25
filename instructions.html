@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- 
+        This should be in your body!
+        Take a look at how the browser is rendering your DOM when you put your audio tag here.
+        Probably not what you're expecting/want.
+
+        If you put it here to hide it, you can do so easily with CSS.
+    -->
     <audio src="SoundFXShortened/8bitNintendoIntro.mp3" autoplay loop></audio>
     <head>
         <meta charset="UTF-8">
@@ -14,7 +21,7 @@
     </head>
     <body>
 
-        <div id="instruct-header">
+        <section id="instruct-header">
 
             <h1>The Story</h1>
 
@@ -36,9 +43,9 @@
             <h1 id="how-to">How to Play</h1>
 
             <h2>Instructions:</h2>
-        </div>
+        </section>
 
-        <div id="instruct">
+        <section id="instruct">
             <ul>
                 <li>Select a character to play. Each character has different inherent strengths and unique abilities.</li>
                 <li>Select a special item for your character. These are unique for each character and affect game play in various ways.</li>
@@ -51,8 +58,6 @@
                 <li>Ready to enter the dungeon and see how far you can make it?</li>
             </ul>
             <h2 id="play-button"><a href="bar.html">I'm ready! Show Me The Characters!</a></h2>
-        </div>
-        <script src=""></script>
-
+        </section>
     </body>
 </html>
