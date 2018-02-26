@@ -3,7 +3,6 @@ html {
     background-size: 120%;
 }
 
-
 body {
     background: rgba(0, 0, 0, 0.089);
     margin: 0;
@@ -18,7 +17,6 @@ body {
     flex-flow: row;
     justify-content: space-around;
     align-items: center
-
 }
 
 #navigation h1 {
@@ -47,7 +45,7 @@ body {
         2px 2px white,
         3px 3px white;
     -webkit-transform: translateX(-5px);
-    transform: translateX(-5px)
+    transform: translateX(-5px);
 }
 
 .nav-buttons a {
@@ -62,6 +60,7 @@ body {
     font-family: 'Nothing You Could Do', cursive;
 }
 
+/* Be consistent with using kabob-case id and class names  */
 #characterSelection {
     display: flex;
     flex-flow: row;
@@ -80,6 +79,7 @@ body {
     justify-content: center;
     align-items: center
 }
+
 
 #goButton {
     background: linear-gradient(blue, navy);

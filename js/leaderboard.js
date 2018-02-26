@@ -1,7 +1,7 @@
 'use strict'
 
-let leaderboardArray;
-let spliced = false; 
+let leaderboardArray = [];
+let spliced = false;
 
 const playerInfo = JSON.parse(localStorage.getItem('score'));
 
@@ -9,25 +9,34 @@ if (localStorage.getItem('leaderboard')) {
     leaderboardArray = JSON.parse(localStorage.getItem('leaderboard'));
 
     if (localStorage.getItem('score')) {
-        let arrayLength = 1;
-        arrayLength = leaderboardArray.length;
+        let arrayLength = leaderboardArray.length;
+
         for (let i = 0; i < arrayLength; i++) {
             if (playerInfo[3] > leaderboardArray[i][3]) {
                 leaderboardArray.splice(i, 0, playerInfo);
                 spliced = true;
                 break;
-            } 
+            }
         }
-
     }
-}   
-
-if ((spliced === false) && (typeof(playerInfo) === 'string')) {
-    leaderboardArray.push(playerInfo);
 }
 
-if (typeof(leaderboardArray) === 'object') {
-    localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray))
+/*
+    Okay, so after some debugging - this is where I ended up.
+    I'm gonna move on and not test it extensively, but it seems to work.
+
+    Changes included:
+        - not checking if playerInfo was a string, because it was an object (array).
+        - setting leaderboardArray as an [] from the get go, so if we don't get it, we can still push into it.
+*/
+
+if (!spliced && playerInfo) leaderboardArray.push(playerInfo);
+
+/*
+   typeof typically is used without ()
+*/
+if (typeof leaderboardArray === 'object') {
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboardArray));
 }
 
 if (leaderboardArray) {

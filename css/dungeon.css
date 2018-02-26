@@ -157,6 +157,7 @@ img.dying {
     }
 }
 
+/* is this targeting the same element as the block beneath it? */
 div#gold {
     font-size: 2em;
 }
@@ -224,6 +225,7 @@ div#gold {
     color: grey;
 }
 
+/* It would make sense to use a class here instead of IDs */
 #fight-container, #flee-container {
     width: 24%;
     margin: 1em 0;

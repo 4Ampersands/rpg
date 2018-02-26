@@ -18,11 +18,12 @@ body {
     height: 100%;
 }
 
+/* kabob case! */
 #leaderboardTable {
     font-size: 150%;
     text-align: center;
     table-layout: fixed;
-    }
+}
 
 table {
     background: linear-gradient(blue, navy);
